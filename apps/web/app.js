@@ -27,14 +27,36 @@ function fanChart(fan) {
 
 async function refreshHeader() {
   const data = await api("/health"); const memory = data.memory; $("#memoryStatus").textContent = memory.configured ? "Hindsight · memory on" : "Local demo memory";
+  if (data.business) {
+    const eyebrowEl = $("#businessEyebrow");
+    if (eyebrowEl) eyebrowEl.textContent = data.business;
+  }
   const sel = $("#worldSelect"); if (sel && data.active_world) sel.value = data.active_world;
   if (sel && !sel.dataset.bound) {
     sel.dataset.bound = "1";
     sel.addEventListener("change", async (e) => {
+      const wid = e.target.value;
       try {
-        await api(`/worlds/switch?world_id=${e.target.value}`, {method: "POST"});
-        window.location.reload();
-      } catch (err) { toast(err.message); }
+        const res = await api(`/worlds/switch?world_id=${encodeURIComponent(wid)}`, {method: "POST"});
+        if (res && res.business) {
+          const eyebrowEl = $("#businessEyebrow");
+          if (eyebrowEl) eyebrowEl.textContent = res.business;
+        }
+        await refreshHeader();
+        toast(`Switched to ${res.business || wid}`);
+        navigate(page);
+      } catch (err) {
+        try {
+          const res = await api(`/worlds/switch?world_id=${encodeURIComponent(wid)}`, {method: "GET"});
+          if (res && res.business) {
+            const eyebrowEl = $("#businessEyebrow");
+            if (eyebrowEl) eyebrowEl.textContent = res.business;
+          }
+          await refreshHeader();
+          toast(`Switched to ${res.business || wid}`);
+          navigate(page);
+        } catch (fErr) { toast(err.message || fErr.message); }
+      }
     });
   }
 }
@@ -125,14 +147,19 @@ async function showPartners() {
 function openDeliver(id){modal.innerHTML=`<form class="modal-card" id="deliverForm"><p class="label">Resolve promise</p><h2>When did it actually arrive?</h2><label>Actual delivery time (days)<input required autofocus name="days" type="number" min="1" step=".5"></label><div class="modal-actions"><button type="button" class="button" id="cancelModal">Cancel</button><button class="button primary">Update reality</button></div></form>`;modal.showModal();$("#cancelModal").onclick=()=>modal.close();$("#deliverForm").onsubmit=async e=>{e.preventDefault();try{await api(`/promises/${id}/deliver`,{method:"POST",body:JSON.stringify({actual_days:Number(new FormData(e.target).get("days"))})});modal.close();toast("Partner belief updated.");showPartners()}catch(x){toast(x.message)}}}
 
 async function showLearn() {
-  setTitle("Learning, shown plainly."); loading("Building scorecard…"); const [score, beliefs] = await Promise.all([api("/scorecard"),api("/beliefs")]);
+  setTitle("Learning, shown plainly."); loading("Building scorecard…");
+  const [score, beliefs, health] = await Promise.all([api("/scorecard"), api("/beliefs"), api("/health")]);
+  if (health && health.business) {
+    const eyebrowEl = $("#businessEyebrow");
+    if (eyebrowEl) eyebrowEl.textContent = health.business;
+  }
   app.innerHTML=`<section class="page"><div class="tabs"><button class="active" id="scoreTab">Scorecard</button><button id="beliefTab">Beliefs</button></div><div id="learnContent"></div></section>`;
   const renderScore=()=>{
     const coveredCount = score.records ? score.records.filter(r => r.covered).length : 0;
     const relVal = score.gradable_reviews === 0 ? "—" : (score.gradable_reviews < 6 ? `${coveredCount} of ${score.gradable_reviews}` : pct(score.coverage));
     const relSub = score.gradable_reviews < 6 ? "Show counts below 6 reviews." : "Stated range target: 80%.";
-    $("#learnContent").innerHTML=`<div class="grid three"><div class="card"><p class="label">Forecasts graded</p><div class="money">${score.gradable_reviews}</div><p style="color:var(--muted);font-size:13px">${score.gradable_reviews < 6 ? "Counts only while evidence is thin." : "Enough reviews to assess coverage."}</p></div><div class="card"><p class="label">Median error</p><div class="money">${score.median_absolute_error===null?"—":money(score.median_absolute_error)}</div><p style="color:var(--muted);font-size:13px">Central estimate versus attributed outcome.</p></div><div class="card"><p class="label">Range reliability</p><div class="money">${relVal}</div><p style="color:var(--muted);font-size:13px">${relSub}</p></div></div><div class="card" style="margin-top:18px"><div class="section-heading" style="margin:0 0 15px"><div><p class="label">Calibration log</p><h2>How the forecast held up.</h2></div><div style="display:flex;gap:8px"><button class="button" id="revealTruth">Reveal synthetic truth</button><button class="button secondary" id="askWhy">Why were we off?</button></div></div>${score.records.length?`<table class="table"><thead><tr><th>Decision</th><th>Predicted</th><th>Actual</th><th>Range held</th></tr></thead><tbody>${score.records.map(r=>`<tr><td>${escape(r.title)}</td><td>${money(r.p50,true)}</td><td>${money(r.actual,true)}</td><td>${r.covered?"✓ inside":"× outside"}</td></tr>`).join("")}</tbody></table>`:`<div class="empty">No graded outcomes yet. Commit then review a decision to start the scorecard.</div>`}</div>`;$("#askWhy").onclick=reflectWhy;$("#revealTruth").onclick=revealTruth};
-  const renderBeliefs=()=>{$("#learnContent").innerHTML=`<div class="card"><div class="section-heading" style="margin:0 0 10px"><div><p class="label">What the model currently believes</p><h2>Starting assumptions become evidence.</h2></div><span class="chip">${beliefs.memory.mode}</span></div>${beliefs.items.map(b=>`<article class="belief"><div><h3>${escape(b.label)}</h3><p>${escape(b.sentence)}</p><div class="bar"><i style="width:${Math.min(100,20+b.n*16)}%"></i></div><small style="color:var(--muted)">${b.source === "prior"?"Starting assumption":`Learned from ${b.n} event${b.n===1?"":"s"}`}</small></div><div><button class="text-button" data-forget="${escape(b.name)}">Forget</button></div></article>`).join("")}</div>`;$$('[data-forget]').forEach(x=>x.onclick=async()=>{if(!confirm(`Reset ${x.dataset.forget} to its starting assumption?`))return;await api(`/beliefs/${encodeURIComponent(x.dataset.forget)}/forget`,{method:"POST"});toast("Belief reset to generic prior.");showLearn()})};
+    $("#learnContent").innerHTML=`<div class="grid three"><div class="card"><p class="label">Forecasts graded · ${escape(health.business || "Business")}</p><div class="money">${score.gradable_reviews}</div><p style="color:var(--muted);font-size:13px">${score.gradable_reviews < 6 ? "Counts only while evidence is thin." : "Enough reviews to assess coverage."}</p></div><div class="card"><p class="label">Median error</p><div class="money">${score.median_absolute_error===null?"—":money(score.median_absolute_error)}</div><p style="color:var(--muted);font-size:13px">Central estimate versus attributed outcome.</p></div><div class="card"><p class="label">Range reliability</p><div class="money">${relVal}</div><p style="color:var(--muted);font-size:13px">${relSub}</p></div></div><div class="card" style="margin-top:18px"><div class="section-heading" style="margin:0 0 15px"><div><p class="label">Calibration log · ${escape(health.business || "Business")}</p><h2>How the forecast held up.</h2></div><div style="display:flex;gap:8px"><button class="button" id="revealTruth">Reveal synthetic truth</button><button class="button secondary" id="askWhy">Why were we off?</button></div></div>${score.records.length?`<table class="table"><thead><tr><th>Decision</th><th>Predicted</th><th>Actual</th><th>Range held</th></tr></thead><tbody>${score.records.map(r=>`<tr><td>${escape(r.title)}</td><td>${money(r.p50,true)}</td><td>${money(r.actual,true)}</td><td>${r.covered?"✓ inside":"× outside"}</td></tr>`).join("")}</tbody></table>`:`<div class="empty">No graded outcomes yet for ${escape(health.business || "this business")}. Commit then review a decision to start the scorecard.</div>`}</div>`;$("#askWhy").onclick=reflectWhy;$("#revealTruth").onclick=revealTruth};
+  const renderBeliefs=()=>{$("#learnContent").innerHTML=`<div class="card"><div class="section-heading" style="margin:0 0 10px"><div><p class="label">What the model currently believes · ${escape(health.business || "Business")}</p><h2>Starting assumptions become evidence.</h2></div><span class="chip">${beliefs.memory.mode}</span></div>${beliefs.items.map(b=>`<article class="belief"><div><h3>${escape(b.label)}</h3><p>${escape(b.sentence)}</p><div class="bar"><i style="width:${Math.min(100,20+b.n*16)}%"></i></div><small style="color:var(--muted)">${b.source === "prior"?"Starting assumption":`Learned from ${b.n} event${b.n===1?"":"s"}`}</small></div><div><button class="text-button" data-forget="${escape(b.name)}">Forget</button></div></article>`).join("")}</div>`;$$('[data-forget]').forEach(x=>x.onclick=async()=>{if(!confirm(`Reset ${x.dataset.forget} to its starting assumption?`))return;await api(`/beliefs/${encodeURIComponent(x.dataset.forget)}/forget`,{method:"POST"});toast("Belief reset to generic prior.");showLearn()})};
   renderScore(); $("#scoreTab").onclick=()=>{$("#scoreTab").classList.add("active");$("#beliefTab").classList.remove("active");renderScore()};$("#beliefTab").onclick=()=>{$("#beliefTab").classList.add("active");$("#scoreTab").classList.remove("active");renderBeliefs()};
 }
 
@@ -140,6 +167,11 @@ async function reflectWhy(){try{const r=await api("/reflect",{method:"POST"});mo
 
 async function revealTruth(){try{const truth=await api("/demo/ground-truth");modal.innerHTML=`<div class="modal-card"><p class="label">Synthetic-demo reveal</p><h2>Hidden ground truth</h2><p>${escape(truth.note)}</p><div class="evidence-list">${Object.entries(truth).filter(([key])=>key!=="note").map(([key,value])=>`<div class="evidence-item"><b>${escape(key.replaceAll("_"," "))}</b><br>${escape(value)}</div>`).join("")}</div><div class="modal-actions"><button class="button primary" id="closeTruth">Done</button></div></div>`;modal.showModal();$("#closeTruth").onclick=()=>modal.close()}catch(e){toast(e.message)}}
 
-async function navigate(next) { page = next; setActiveNav(); if(next==="home")return showHome();if(next==="decisions")return showDecisions();if(next==="partners")return showPartners();if(next==="learn")return showLearn(); }
+async function navigate(next) { page = next; window.location.hash = next; setActiveNav(); if(next==="home")return showHome();if(next==="decisions")return showDecisions();if(next==="partners")return showPartners();if(next==="learn")return showLearn(); }
 $$("[data-page]").forEach(button => button.onclick = () => navigate(button.dataset.page)); $("#askFab").onclick=()=>openAsk();$("#mobileAsk").onclick=()=>openAsk();$("#advanceDemo").onclick=async()=>{try{const r=await api("/demo/advance?step=1",{method:"POST"});$("#weekPill").textContent=`week ${r.week}`;toast(r.message);if(page==="home")showHome()}catch(e){toast(e.message)}};
-refreshHeader().catch(()=>{}); navigate("home");
+window.addEventListener("hashchange", () => {
+  const hash = window.location.hash.replace("#", "");
+  if (hash && hash !== page) navigate(hash);
+});
+const initPage = window.location.hash.replace("#", "") || "home";
+refreshHeader().catch(()=>{}); navigate(initPage);

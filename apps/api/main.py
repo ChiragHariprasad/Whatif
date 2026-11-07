@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
@@ -147,15 +147,46 @@ def list_worlds() -> dict[str, Any]:
     }
 
 
-@app.post("/api/worlds/switch")
-def switch_world(world_id: str) -> dict[str, Any]:
+@app.api_route("/api/worlds/switch", methods=["GET", "POST", "PUT"])
+@app.api_route("/api/worlds/switch/{world_id}", methods=["GET", "POST", "PUT"])
+@app.api_route("/api/worlds/{world_id}/switch", methods=["GET", "POST", "PUT"])
+async def switch_world(request: Request, world_id: str | None = None) -> dict[str, Any]:
     global active_world_id
-    if world_id not in WORLDS:
-        raise HTTPException(404, f"World '{world_id}' not found. Choose ember-wick, northlight-studio, or brew-lane-cafe.")
-    active_world_id = world_id
-    st = get_store(world_id)
-    mem = get_memory(world_id)
-    return {"ok": True, "active": active_world_id, "business": st.business().name, "bank_id": mem.bank_id}
+    target = world_id
+    if not target:
+        target = request.query_params.get("world_id") or request.query_params.get("world")
+    if not target:
+        try:
+            body = await request.json()
+            if isinstance(body, dict):
+                target = body.get("world_id") or body.get("world") or body.get("id")
+        except Exception:
+            pass
+    if not target:
+        raise HTTPException(422, "Please provide world_id (e.g. ember-wick, northlight-studio, brew-lane-cafe).")
+
+    target_clean = str(target).lower().strip()
+    if target_clean in WORLDS:
+        chosen = target_clean
+    elif "agency" in target_clean or "northlight" in target_clean:
+        chosen = "northlight-studio"
+    elif "cafe" in target_clean or "brew" in target_clean:
+        chosen = "brew-lane-cafe"
+    elif "ember" in target_clean or "candle" in target_clean or "wick" in target_clean:
+        chosen = "ember-wick"
+    else:
+        raise HTTPException(404, f"World '{target}' not found. Choose ember-wick, northlight-studio, or brew-lane-cafe.")
+
+    active_world_id = chosen
+    st = get_store(chosen)
+    mem = get_memory(chosen)
+    return {
+        "ok": True,
+        "active": active_world_id,
+        "world_id": active_world_id,
+        "business": st.business().name,
+        "bank_id": mem.bank_id,
+    }
 
 
 @app.get("/api/health")
@@ -170,7 +201,7 @@ def get_business() -> dict[str, Any]:
     business = store.business(); return {"business": business.to_dict(), "headline": {"monthly_revenue": business.monthly_revenue, "gross_margin": business.gross_margin, "cash": business.cash0, "monthly_fixed": business.monthly_fixed, "monthly_ads": business.monthly_ad_spend}}
 
 
-@app.put("/api/business")
+@app.api_route("/api/business", methods=["PUT", "POST"])
 def update_business(payload: BusinessUpdate) -> dict[str, Any]:
     store = get_store()
     business = store.business(); business.rescale(payload.monthly_revenue, payload.gross_margin, payload.cash, payload.monthly_fixed, payload.monthly_ads); store.set_business(business)

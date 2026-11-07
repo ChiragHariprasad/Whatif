@@ -40,3 +40,64 @@ INFO:     127.0.0.1:58961 - "GET /api/business HTTP/1.1" 200 OK
 INFO:     127.0.0.1:58961 - "GET /api/decisions HTTP/1.1" 200 OK
 INFO:     127.0.0.1:62032 - "GET /api/decisions/D-A856C69C HTTP/1.1" 200 OK
 INFO:     127.0.0.1:62032 - "GET /api/decisions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52027 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57222 - "GET /app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52027 - "GET /styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52027 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57222 - "GET /api/home HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57222 - "GET /api/business HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57222 - "GET /api/decisions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57222 - "GET /api/partners HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58816 - "GET /api/beliefs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49709 - "GET /api/scorecard HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57764 - "POST /api/worlds/switch?world_id=northlight-studio HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:57764 - "POST /api/worlds/switch?world_id=brew-lane-cafe HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:65444 - "POST /api/worlds/switch?world_id=ember-wick HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:56173 - "POST /api/demo/advance?step=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56173 - "GET /api/home HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56173 - "GET /api/business HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56173 - "POST /api/demo/advance?step=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56173 - "GET /api/home HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56173 - "GET /api/business HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51112 - "GET /api/beliefs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53855 - "GET /api/scorecard HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53791 - "POST /api/worlds/switch?world_id=northlight-studio HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:49161 - "GET / HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:49161 - "GET /styles.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:52562 - "GET /app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52562 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49161 - "GET /api/home HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49161 - "GET /api/business HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49161 - "POST /api/worlds/switch?world_id=northlight-studio HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:49161 - "GET /api/worlds/switch?world_id=northlight-studio HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49161 - "GET /api/partners HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58698 - "POST /api/worlds/switch?world_id=brew-lane-cafe HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:58698 - "GET /api/worlds/switch?world_id=brew-lane-cafe HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58698 - "POST /api/worlds/switch?world_id=ember-wick HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:58698 - "GET /api/worlds/switch?world_id=ember-wick HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53271 - "GET / HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:53271 - "GET /app.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:53271 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55902 - "GET /api/partners HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55902 - "POST /api/worlds/switch?world_id=northlight-studio HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:55902 - "GET /api/worlds/switch?world_id=northlight-studio HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50143 - "GET /styles.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:50143 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56862 - "GET /api/home HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56862 - "GET /api/business HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56862 - "POST /api/worlds/switch?world_id=northlight-studio HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:56862 - "GET /api/worlds/switch?world_id=northlight-studio HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56862 - "GET /api/decisions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63818 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63818 - "GET /styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55016 - "GET /app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55016 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63818 - "GET /api/decisions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63818 - "POST /api/worlds/switch?world_id=northlight-studio HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:63818 - "GET /api/worlds/switch?world_id=northlight-studio HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63557 - "POST /api/worlds/switch?world_id=ember-wick HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:63557 - "GET /api/worlds/switch?world_id=ember-wick HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63557 - "POST /api/worlds/switch?world_id=northlight-studio HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:63557 - "GET /api/worlds/switch?world_id=northlight-studio HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53263 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60004 - "GET /api/business HTTP/1.1" 200 OK
