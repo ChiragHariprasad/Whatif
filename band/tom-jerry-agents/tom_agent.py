@@ -28,7 +28,7 @@ def groq_llm() -> ChatOpenAI:
 
 
 async def main() -> None:
-    load_dotenv()
+    load_dotenv(override=True)
     adapter = LangGraphAdapter(
         LangGraphAdapterConfig(custom_section=generate_tom_prompt("Tom")),
         llm=groq_llm(),

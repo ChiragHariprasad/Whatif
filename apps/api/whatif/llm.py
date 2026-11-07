@@ -19,10 +19,10 @@ def render_verdict(result: dict[str, Any]) -> dict[str, Any]:
 
 
 def substitute(template: str, values: dict[str, str]) -> str:
-    names = set(re.findall(r"\[\[([a-z_]+)\]\]", template))
+    names = set(re.findall(r"\[\[([a-z0-9_]+)\]\]", template))
     if not names.issubset(values): raise ValueError("Explanation requested an unknown numeric placeholder")
-    if re.search(r"\d", re.sub(r"\[\[[a-z_]+\]\]", "", template)): raise ValueError("Generated prose may not contain literal digits")
-    return re.sub(r"\[\[([a-z_]+)\]\]", lambda item: values[item.group(1)], template)
+    if re.search(r"\d", re.sub(r"\[\[[a-z0-9_]+\]\]", "", template)): raise ValueError("Generated prose may not contain literal digits")
+    return re.sub(r"\[\[([a-z0-9_]+)\]\]", lambda item: values[item.group(1)], template)
 
 
 def rupees(value: float) -> str:

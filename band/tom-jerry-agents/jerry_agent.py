@@ -27,7 +27,7 @@ def groq_llm() -> ChatOpenAI:
 
 
 async def main() -> None:
-    load_dotenv()
+    load_dotenv(override=True)
     adapter = LangGraphAdapter(
         LangGraphAdapterConfig(custom_section=generate_jerry_prompt("Jerry")),
         llm=groq_llm(),

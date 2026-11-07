@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 
 import numpy as np
@@ -21,6 +21,7 @@ class Decision:
     start: int = 1
     duration: int = 4
     title: str | None = None
+    linked_decisions: list[Decision] = field(default_factory=list)
 
     @property
     def end(self) -> int:
@@ -33,8 +34,15 @@ class Decision:
     def active(self, week: int) -> bool:
         return self.start <= week < self.end
 
+    @property
+    def all_decisions(self) -> list[Decision]:
+        return [self] + list(self.linked_decisions or [])
+
     def as_dict(self) -> dict[str, Any]:
-        return {"lever": self.lever, "group": self.group, "change": self.change, "start": self.start, "duration": self.duration, "title": self.title or title_for(self)}
+        res = {"lever": self.lever, "group": self.group, "change": self.change, "start": self.start, "duration": self.duration, "title": self.title or title_for(self)}
+        if self.linked_decisions:
+            res["linked_decisions"] = [ld.as_dict() for ld in self.linked_decisions]
+        return res
 
 
 def title_for(decision: Decision) -> str:
@@ -46,6 +54,16 @@ def title_for(decision: Decision) -> str:
 
 
 def test_decision(decision: Decision) -> Decision:
+    if decision.linked_decisions:
+        linked = []
+        for ld in decision.linked_decisions:
+            if ld.lever == "ads":
+                linked.append(Decision("ads", ld.group, min(ld.change * .4, .20), ld.start, 2, title="Capped ad test"))
+            elif ld.lever == "restock":
+                linked.append(Decision("restock", ld.group, max(250, round(ld.change * .25)), ld.start, 1, title="Split order (batch 1)"))
+            else:
+                linked.append(test_decision(ld))
+        return Decision(decision.lever, decision.group, decision.change * .5, decision.start, 2, title="Smaller test: split restock & cap ads", linked_decisions=linked)
     if decision.lever == "restock":
         change = max(1, round(decision.change * .5))
     else:
@@ -57,6 +75,15 @@ def parse_question(question: str, business: Business) -> Decision:
     """Small deterministic parser; the API also returns the editable decision card."""
     import re
     lower = question.lower()
+    if "diwali" in lower and any(x in lower for x in ("price", "raise")) and any(x in lower for x in ("ad", "instagram", "spend")) and any(x in lower for x in ("restock", "jar", "order")):
+        return Decision(
+            "price", "core", 0.08, start=1, duration=4,
+            title="Diwali Campaign: Core price +8%, Ads +₹2L, 4,000 jars restock",
+            linked_decisions=[
+                Decision("ads", "core", 0.45, start=1, duration=4, title="Diwali Ads: +₹2L/mo"),
+                Decision("restock", "premium", 4000, start=1, duration=1, title="Restock 4,000 Rajan jars")
+            ]
+        )
     group = "premium" if any(x in lower for x in ("premium", "luxury", "collection")) else "core"
     if "gift" in lower: group = "gifting"
     match = re.search(r"(-?\d+(?:\.\d+)?)\s*%", lower)
@@ -173,7 +200,8 @@ def simulate(business: Business, beliefs: dict[str, dict[str, Any]], decision: D
     world = _world(business, beliefs, runs, seed); baseline = run_twin(business, world, [], now_week); test = test_decision(decision)
     group_index = [g.key for g in business.groups].index(decision.group); measurement_noise = world["rng"].normal(0, .055, runs)
     def scenario(label: str, d: Decision | None) -> tuple[dict[str, Any], dict[str, Any]]:
-        run = baseline if d is None else run_twin(business, world, [d], now_week); end = (d or decision).eval_end
+        target_decisions = [] if d is None else d.all_decisions
+        run = baseline if d is None else run_twin(business, world, target_decisions, now_week); end = (d or decision).eval_end
         profit_delta = run["profit"][:, :end].sum(1) - baseline["profit"][:, :end].sum(1)
         if d is not None: profit_delta += measurement_noise * max(1, business.group(d.group).margin * business.group(d.group).base_units * max(1, d.duration))
         qs = quantiles(profit_delta)

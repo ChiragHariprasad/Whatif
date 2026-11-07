@@ -12,8 +12,8 @@ for week, value in {
     3: 1.04, 4: 1.08, 11: 1.06, 12: 1.10, 13: 1.18, 14: 1.30,
     15: 1.42, 16: 1.15, 17: .95, 18: 1.08, 19: 1.10, 20: 1.10,
     21: 1.08, 24: 1.15, 25: 1.10, 26: .93, 27: .92, 28: .92,
-    29: .94, 31: 1.18, 34: 1.08, 40: .94, 41: .93, 42: .93,
-    43: .93, 44: .93, 45: .93, 46: .93, 47: .94,
+    29: .94, 31: 1.18, 34: 1.08, 40: .94, 41: .93,
+    42: 1.35, 43: 1.55, 44: 1.70, 45: 1.25, 46: .88, 47: .85,
 }.items():
     SEASONAL[week] = value
 
@@ -121,8 +121,12 @@ class Business:
 
 
 def demo_business() -> Business:
+    return ember_wick_business()
+
+
+def ember_wick_business() -> Business:
     return Business(
-        name="Lumen & Wick Candle Co.",
+        name="Ember & Wick Candle Co.",
         groups=[
             Group("premium", "Premium Collection", 80, 1500, 600, .30, 25000, "rajan-jars"),
             Group("core", "Core Range", 410, 550, 240, .35, 44000, "aarav-waxworks"),
@@ -135,5 +139,44 @@ def demo_business() -> Business:
             Partner("inklane", "InkLane Printers", "other", 4),
             Partner("speedy-courier", "Speedy Courier", "courier", 7),
         ],
-        cash0=400000, fixed_weekly=95000, cod_share=.45, courier_key="speedy-courier",
+        cash0=120000, fixed_weekly=95000, cod_share=.45, courier_key="speedy-courier",
     )
+
+
+def northlight_studio_business() -> Business:
+    return Business(
+        name="Northlight Studio",
+        groups=[
+            Group("retainers", "Retainer Clients", 6, 450000, 180000, .20, 40000, "apex-digital"),
+            Group("projects", "Fixed-Price Projects", 4, 450000, 220000, .80, 80000, "devcraft-contractors"),
+        ],
+        partners=[
+            Partner("apex-digital", "Apex Digital (Client)", "courier", 30),
+            Partner("scaleco", "ScaleCo (Client)", "courier", 30),
+            Partner("devcraft-contractors", "DevCraft Contractors", "supplier", 7),
+        ],
+        cash0=350000, fixed_weekly=280000, cod_share=0.0, courier_key="apex-digital",
+    )
+
+
+def brew_lane_cafe_business() -> Business:
+    return Business(
+        name="Brew Lane Café",
+        groups=[
+            Group("dine_in", "Dine-in Service", 1200, 380, 190, .40, 20000, "freshfarms-produce"),
+            Group("delivery", "Delivery Orders", 850, 420, 220, .60, 30000, "app-payouts"),
+        ],
+        partners=[
+            Partner("freshfarms-produce", "FreshFarms Produce", "supplier", 1),
+            Partner("dairydirect", "DairyDirect", "supplier", 2),
+            Partner("app-payouts", "Delivery App Payouts", "courier", 7),
+        ],
+        cash0=180000, fixed_weekly=210000, cod_share=0.0, courier_key="app-payouts",
+    )
+
+
+def get_business_world(key: str) -> Business:
+    k = key.lower()
+    if "agency" in k or "northlight" in k: return northlight_studio_business()
+    if "cafe" in k or "brew" in k: return brew_lane_cafe_business()
+    return ember_wick_business()
