@@ -84,8 +84,19 @@ def parse_question(question: str, business: Business) -> Decision:
                 Decision("restock", "premium", 4000, start=1, duration=1, title="Restock 4,000 Rajan jars")
             ]
         )
-    group = "premium" if any(x in lower for x in ("premium", "luxury", "collection")) else "core"
-    if "gift" in lower: group = "gifting"
+    group_keys = [g.key for g in business.groups]
+    group = group_keys[0]
+    for g in business.groups:
+        if g.key.lower() in lower or any(w in lower for w in g.name.lower().split() if len(w) > 3):
+            group = g.key
+            break
+    if "premium" in lower and "premium" in group_keys: group = "premium"
+    elif "core" in lower and "core" in group_keys: group = "core"
+    elif "gift" in lower and "gifting" in group_keys: group = "gifting"
+    elif any(w in lower for w in ("retainer", "retainers")) and "retainers" in group_keys: group = "retainers"
+    elif any(w in lower for w in ("project", "projects", "fixed-price", "fixed price")) and "projects" in group_keys: group = "projects"
+    elif any(w in lower for w in ("dine-in", "dine in", "dining", "menu")) and "dine_in" in group_keys: group = "dine_in"
+    elif any(w in lower for w in ("delivery", "app", "online")) and "delivery" in group_keys: group = "delivery"
     match = re.search(r"(-?\d+(?:\.\d+)?)\s*%", lower)
     percent = float(match.group(1)) / 100 if match else .10
     duration = int(re.search(r"(\d+)\s*(?:week|wk)", lower).group(1)) if re.search(r"(\d+)\s*(?:week|wk)", lower) else 4

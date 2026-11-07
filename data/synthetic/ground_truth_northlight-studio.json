@@ -1,0 +1,13 @@
+{
+  "world_id": "northlight-studio",
+  "business": "Northlight Studio",
+  "note": "Synthetic demo ground truth. Never fed to the learner.",
+  "retainer_elasticity": -0.42,
+  "project_elasticity": -1.32,
+  "new_hire_ramp_weeks": 6,
+  "apex_digital_payment_days": 47.0,
+  "scaleco_payment_days": 62.0,
+  "devcraft_contractor_ratio": 2.0,
+  "contractor_hedge_extra_days": 4.0,
+  "fixed_price_overrun_pct": 0.2
+}

@@ -1,0 +1,12 @@
+{
+  "world_id": "ember-wick",
+  "business": "Ember & Wick Candle Co.",
+  "note": "Synthetic demo ground truth. Never fed to the learner.",
+  "premium_elasticity": -0.52,
+  "core_elasticity": -1.74,
+  "ad_saturation_budget": 400000.0,
+  "rajan_jars_ratio": 1.6,
+  "hedge_extra_days": 3.0,
+  "speedy_courier_ratio": 1.71,
+  "festival_lift_factor": 1.45
+}

@@ -27,6 +27,16 @@ function fanChart(fan) {
 
 async function refreshHeader() {
   const data = await api("/health"); const memory = data.memory; $("#memoryStatus").textContent = memory.configured ? "Hindsight · memory on" : "Local demo memory";
+  const sel = $("#worldSelect"); if (sel && data.active_world) sel.value = data.active_world;
+  if (sel && !sel.dataset.bound) {
+    sel.dataset.bound = "1";
+    sel.addEventListener("change", async (e) => {
+      try {
+        await api(`/worlds/switch?world_id=${e.target.value}`, {method: "POST"});
+        window.location.reload();
+      } catch (err) { toast(err.message); }
+    });
+  }
 }
 
 async function showHome() {
@@ -56,7 +66,9 @@ async function openAsk(question = "") {
 
 function showDecisionCard() {
   const content = $("#askContent");
-  content.innerHTML = `<div class="card" style="margin-top:18px"><div class="section-heading" style="margin:0 0 9px"><div><p class="label">Editable decision</p><h2>${escape(decision.title)}</h2></div><span class="chip">${memoryOn ? "Memory On" : "Memory Off"}</span></div><div class="decision-form"><div class="field"><label>Lever</label><select id="lever"><option value="price">Price</option><option value="ads">Ads</option><option value="promotion">Promotion</option><option value="restock">Restock</option></select></div><div class="field"><label>Product group</label><select id="group"><option value="premium">Premium</option><option value="core">Core</option><option value="gifting">Gifting</option></select></div><div class="field"><label>Change</label><input id="change" type="number" step="1" value="${decision.lever === "restock" ? decision.change : decision.change * 100}"></div><div class="field"><label>Starts week</label><input id="start" type="number" min="0" max="12" value="${decision.start}"></div><div class="field"><label>Duration</label><input id="duration" type="number" min="1" max="13" value="${decision.duration}"></div></div><div style="margin-top:17px;display:flex;justify-content:flex-end"><button class="button primary" id="runSimulation">Run 5,000 simulations →</button></div></div>`;
+  const bizGroups = (business && business.business && business.business.groups) ? business.business.groups : (business && business.groups ? business.groups : []);
+  const groupOptions = bizGroups.length ? bizGroups.map(g => `<option value="${g.key}">${escape(g.name)}</option>`).join("") : `<option value="premium">Premium</option><option value="core">Core</option><option value="gifting">Gifting</option>`;
+  content.innerHTML = `<div class="card" style="margin-top:18px"><div class="section-heading" style="margin:0 0 9px"><div><p class="label">Editable decision</p><h2>${escape(decision.title)}</h2></div><span class="chip">${memoryOn ? "Memory On" : "Memory Off"}</span></div><div class="decision-form"><div class="field"><label>Lever</label><select id="lever"><option value="price">Price</option><option value="ads">Ads</option><option value="promotion">Promotion</option><option value="restock">Restock</option></select></div><div class="field"><label>Product group</label><select id="group">${groupOptions}</select></div><div class="field"><label>Change</label><input id="change" type="number" step="1" value="${decision.lever === "restock" ? decision.change : decision.change * 100}"></div><div class="field"><label>Starts week</label><input id="start" type="number" min="0" max="12" value="${decision.start}"></div><div class="field"><label>Duration</label><input id="duration" type="number" min="1" max="13" value="${decision.duration}"></div></div><div style="margin-top:17px;display:flex;justify-content:flex-end"><button class="button primary" id="runSimulation">Run 5,000 simulations →</button></div></div>`;
   $("#lever").value = decision.lever; $("#group").value = decision.group;
   $("#runSimulation").onclick = runSimulation;
 }

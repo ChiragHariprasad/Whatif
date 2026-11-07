@@ -1,0 +1,13 @@
+{
+  "world_id": "brew-lane-cafe",
+  "business": "Brew Lane Caf\u00e9",
+  "note": "Synthetic demo ground truth. Never fed to the learner.",
+  "weekend_dinein_elasticity": -0.58,
+  "weekday_dinner_elasticity": -1.14,
+  "late_night_revenue_gain_pct": 0.03,
+  "late_night_labor_cost_pct": 0.18,
+  "promo_pullforward_lift": 0.35,
+  "promo_pullforward_drain": -0.18,
+  "freshfarms_produce_delay_days": 0.8,
+  "delivery_app_payout_days": 16.0
+}

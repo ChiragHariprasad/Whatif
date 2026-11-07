@@ -1,0 +1,1046 @@
+[
+  {
+    "run_id": "SR-001",
+    "world_id": "ember-wick",
+    "business": "Ember & Wick Candle Co.",
+    "question": "Raise Premium prices 10% for 4 weeks",
+    "decision": {
+      "lever": "price",
+      "group": "premium",
+      "change": 0.1,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Premium price by +10%"
+    },
+    "seed": 42001,
+    "memory_on": true,
+    "timestamp": "2026-11-07T16:01:11.811560+00:00",
+    "response_time_ms": 19179.3,
+    "profit_delta": {
+      "p10": 11506.08185422462,
+      "p50": 34009.33802462047,
+      "p90": 56830.39772998239
+    },
+    "loss_chance": 0.0254,
+    "min_cash": -69204.76236265438,
+    "min_week": 1,
+    "negative_cash_chance": 1.0,
+    "recommendation": "plan",
+    "citations_count": 5
+  },
+  {
+    "run_id": "SR-002",
+    "world_id": "ember-wick",
+    "business": "Ember & Wick Candle Co.",
+    "question": "Raise Premium prices 10% for 4 weeks",
+    "decision": {
+      "lever": "price",
+      "group": "premium",
+      "change": 0.1,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Premium price by +10%"
+    },
+    "seed": 42002,
+    "memory_on": false,
+    "timestamp": "2026-11-07T16:01:12.139930+00:00",
+    "response_time_ms": 328.3,
+    "profit_delta": {
+      "p10": -40184.172176680324,
+      "p50": -4669.496816058799,
+      "p90": 32416.947247319356
+    },
+    "loss_chance": 0.5698,
+    "min_cash": -67987.62308927301,
+    "min_week": 1,
+    "negative_cash_chance": 0.998,
+    "recommendation": "test",
+    "citations_count": 0
+  },
+  {
+    "run_id": "SR-003",
+    "world_id": "ember-wick",
+    "business": "Ember & Wick Candle Co.",
+    "question": "Cut Instagram ads by 20% for 6 weeks",
+    "decision": {
+      "lever": "ads",
+      "group": "premium",
+      "change": 0.2,
+      "start": 1,
+      "duration": 6,
+      "title": "Change Premium ads by +20%"
+    },
+    "seed": 42003,
+    "memory_on": true,
+    "timestamp": "2026-11-07T16:01:15.277651+00:00",
+    "response_time_ms": 3137.6,
+    "profit_delta": {
+      "p10": -42134.39319064244,
+      "p50": -7194.243232101994,
+      "p90": 32490.76805617561
+    },
+    "loss_chance": 0.5976,
+    "min_cash": -69312.14886440287,
+    "min_week": 1,
+    "negative_cash_chance": 1.0,
+    "recommendation": "test",
+    "citations_count": 5
+  },
+  {
+    "run_id": "SR-004",
+    "world_id": "ember-wick",
+    "business": "Ember & Wick Candle Co.",
+    "question": "Cut Instagram ads by 20% for 6 weeks",
+    "decision": {
+      "lever": "ads",
+      "group": "premium",
+      "change": 0.2,
+      "start": 1,
+      "duration": 6,
+      "title": "Change Premium ads by +20%"
+    },
+    "seed": 42004,
+    "memory_on": false,
+    "timestamp": "2026-11-07T16:01:15.589986+00:00",
+    "response_time_ms": 312.3,
+    "profit_delta": {
+      "p10": -41808.64772532548,
+      "p50": -7225.229783752158,
+      "p90": 30851.02828320022
+    },
+    "loss_chance": 0.5996,
+    "min_cash": -67932.6794283759,
+    "min_week": 1,
+    "negative_cash_chance": 0.9974,
+    "recommendation": "test",
+    "citations_count": 0
+  },
+  {
+    "run_id": "SR-005",
+    "world_id": "ember-wick",
+    "business": "Ember & Wick Candle Co.",
+    "question": "Run a 15% weekend flash sale on Core range for 2 weeks",
+    "decision": {
+      "lever": "promotion",
+      "group": "core",
+      "change": 0.15,
+      "start": 1,
+      "duration": 2,
+      "title": "Run a 15% Core promotion"
+    },
+    "seed": 42005,
+    "memory_on": true,
+    "timestamp": "2026-11-07T16:01:18.352795+00:00",
+    "response_time_ms": 2762.7,
+    "profit_delta": {
+      "p10": -52132.308687268946,
+      "p50": 12069.604229174502,
+      "p90": 84275.08118946831
+    },
+    "loss_chance": 0.4062,
+    "min_cash": -69502.94888377309,
+    "min_week": 1,
+    "negative_cash_chance": 1.0,
+    "recommendation": "test",
+    "citations_count": 5
+  },
+  {
+    "run_id": "SR-006",
+    "world_id": "ember-wick",
+    "business": "Ember & Wick Candle Co.",
+    "question": "Run a 15% weekend flash sale on Core range for 2 weeks",
+    "decision": {
+      "lever": "promotion",
+      "group": "core",
+      "change": 0.15,
+      "start": 1,
+      "duration": 2,
+      "title": "Run a 15% Core promotion"
+    },
+    "seed": 42006,
+    "memory_on": false,
+    "timestamp": "2026-11-07T16:01:18.696440+00:00",
+    "response_time_ms": 343.6,
+    "profit_delta": {
+      "p10": -52502.54331157924,
+      "p50": 11645.40716302702,
+      "p90": 82579.41523825596
+    },
+    "loss_chance": 0.409,
+    "min_cash": -68085.47620529357,
+    "min_week": 1,
+    "negative_cash_chance": 0.9984,
+    "recommendation": "test",
+    "citations_count": 0
+  },
+  {
+    "run_id": "SR-007",
+    "world_id": "ember-wick",
+    "business": "Ember & Wick Candle Co.",
+    "question": "Restock 2500 jars from Rajan Jars",
+    "decision": {
+      "lever": "restock",
+      "group": "premium",
+      "change": 2500.0,
+      "start": 1,
+      "duration": 1,
+      "title": "Restock Premium with 2500 extra units"
+    },
+    "seed": 42007,
+    "memory_on": true,
+    "timestamp": "2026-11-07T16:01:21.512121+00:00",
+    "response_time_ms": 2815.4,
+    "profit_delta": {
+      "p10": -4888.436190973837,
+      "p50": 53.64427424854666,
+      "p90": 4975.010348282769
+    },
+    "loss_chance": 0.4924,
+    "min_cash": -1430258.94459187,
+    "min_week": 2,
+    "negative_cash_chance": 1.0,
+    "recommendation": "plan",
+    "citations_count": 5
+  },
+  {
+    "run_id": "SR-008",
+    "world_id": "ember-wick",
+    "business": "Ember & Wick Candle Co.",
+    "question": "Restock 2500 jars from Rajan Jars",
+    "decision": {
+      "lever": "restock",
+      "group": "premium",
+      "change": 2500.0,
+      "start": 1,
+      "duration": 1,
+      "title": "Restock Premium with 2500 extra units"
+    },
+    "seed": 42008,
+    "memory_on": false,
+    "timestamp": "2026-11-07T16:01:21.769822+00:00",
+    "response_time_ms": 257.7,
+    "profit_delta": {
+      "p10": -4997.316297241145,
+      "p50": 47.265246404897326,
+      "p90": 5087.171226826207
+    },
+    "loss_chance": 0.4946,
+    "min_cash": -1345869.273402607,
+    "min_week": 2,
+    "negative_cash_chance": 1.0,
+    "recommendation": "plan",
+    "citations_count": 0
+  },
+  {
+    "run_id": "SR-009",
+    "world_id": "ember-wick",
+    "business": "Ember & Wick Candle Co.",
+    "question": "Raise Core range prices 8% for 4 weeks",
+    "decision": {
+      "lever": "price",
+      "group": "core",
+      "change": 0.08,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Core price by +8%"
+    },
+    "seed": 42009,
+    "memory_on": true,
+    "timestamp": "2026-11-07T16:01:23.812553+00:00",
+    "response_time_ms": 2042.6,
+    "profit_delta": {
+      "p10": -56679.94274875984,
+      "p50": -2626.505025122988,
+      "p90": 55158.111658244445
+    },
+    "loss_chance": 0.5254,
+    "min_cash": -69082.33635222989,
+    "min_week": 1,
+    "negative_cash_chance": 1.0,
+    "recommendation": "test",
+    "citations_count": 5
+  },
+  {
+    "run_id": "SR-010",
+    "world_id": "ember-wick",
+    "business": "Ember & Wick Candle Co.",
+    "question": "Raise Core range prices 8% for 4 weeks",
+    "decision": {
+      "lever": "price",
+      "group": "core",
+      "change": 0.08,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Core price by +8%"
+    },
+    "seed": 42010,
+    "memory_on": false,
+    "timestamp": "2026-11-07T16:01:24.109403+00:00",
+    "response_time_ms": 296.8,
+    "profit_delta": {
+      "p10": -58101.236709046374,
+      "p50": -1793.0357602685835,
+      "p90": 56137.50735258807
+    },
+    "loss_chance": 0.5194,
+    "min_cash": -68055.92129692678,
+    "min_week": 1,
+    "negative_cash_chance": 0.9982,
+    "recommendation": "test",
+    "citations_count": 0
+  },
+  {
+    "run_id": "SR-011",
+    "world_id": "ember-wick",
+    "business": "Ember & Wick Candle Co.",
+    "question": "Increase Instagram ads by 35% for 4 weeks",
+    "decision": {
+      "lever": "ads",
+      "group": "premium",
+      "change": 0.35,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Premium ads by +35%"
+    },
+    "seed": 42011,
+    "memory_on": true,
+    "timestamp": "2026-11-07T16:01:27.499192+00:00",
+    "response_time_ms": 3389.7,
+    "profit_delta": {
+      "p10": -37029.175725151305,
+      "p50": -10716.942184912245,
+      "p90": 25583.516140240507
+    },
+    "loss_chance": 0.666,
+    "min_cash": -69327.90133822623,
+    "min_week": 1,
+    "negative_cash_chance": 1.0,
+    "recommendation": "test",
+    "citations_count": 5
+  },
+  {
+    "run_id": "SR-012",
+    "world_id": "ember-wick",
+    "business": "Ember & Wick Candle Co.",
+    "question": "Increase Instagram ads by 35% for 4 weeks",
+    "decision": {
+      "lever": "ads",
+      "group": "premium",
+      "change": 0.35,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Premium ads by +35%"
+    },
+    "seed": 42012,
+    "memory_on": false,
+    "timestamp": "2026-11-07T16:01:27.869254+00:00",
+    "response_time_ms": 370.0,
+    "profit_delta": {
+      "p10": -36681.31790816665,
+      "p50": -10780.293570902442,
+      "p90": 25945.63498104044
+    },
+    "loss_chance": 0.6758,
+    "min_cash": -68021.81545677842,
+    "min_week": 1,
+    "negative_cash_chance": 0.9974,
+    "recommendation": "test",
+    "citations_count": 0
+  },
+  {
+    "run_id": "SR-013",
+    "world_id": "northlight-studio",
+    "business": "Northlight Studio",
+    "question": "Raise retainer rates by 10% for 4 weeks",
+    "decision": {
+      "lever": "price",
+      "group": "retainers",
+      "change": 0.1,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Retainers price by +10%"
+    },
+    "seed": 42013,
+    "memory_on": true,
+    "timestamp": "2026-11-07T16:01:37.153244+00:00",
+    "response_time_ms": 9281.8,
+    "profit_delta": {
+      "p10": 41360.51855670484,
+      "p50": 622000.9148934946,
+      "p90": 1222819.3120118573
+    },
+    "loss_chance": 0.086,
+    "min_cash": -1940763.4988044226,
+    "min_week": 1,
+    "negative_cash_chance": 1.0,
+    "recommendation": "plan",
+    "citations_count": 5
+  },
+  {
+    "run_id": "SR-014",
+    "world_id": "northlight-studio",
+    "business": "Northlight Studio",
+    "question": "Raise retainer rates by 10% for 4 weeks",
+    "decision": {
+      "lever": "price",
+      "group": "retainers",
+      "change": 0.1,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Retainers price by +10%"
+    },
+    "seed": 42014,
+    "memory_on": false,
+    "timestamp": "2026-11-07T16:01:37.428219+00:00",
+    "response_time_ms": 274.9,
+    "profit_delta": {
+      "p10": -948376.4964915739,
+      "p50": -113559.815801336,
+      "p90": 758521.1885507554
+    },
+    "loss_chance": 0.5652,
+    "min_cash": -1939235.9626993192,
+    "min_week": 1,
+    "negative_cash_chance": 1.0,
+    "recommendation": "test",
+    "citations_count": 0
+  },
+  {
+    "run_id": "SR-015",
+    "world_id": "northlight-studio",
+    "business": "Northlight Studio",
+    "question": "Offer 15% discount on fixed-price projects for 4 weeks",
+    "decision": {
+      "lever": "promotion",
+      "group": "projects",
+      "change": 0.15,
+      "start": 1,
+      "duration": 4,
+      "title": "Run a 15% Projects promotion"
+    },
+    "seed": 42015,
+    "memory_on": true,
+    "timestamp": "2026-11-07T16:01:41.265106+00:00",
+    "response_time_ms": 3836.7,
+    "profit_delta": {
+      "p10": -960580.8319671171,
+      "p50": -76065.19552268188,
+      "p90": 793645.9060894086
+    },
+    "loss_chance": 0.544,
+    "min_cash": -1942887.557699237,
+    "min_week": 1,
+    "negative_cash_chance": 1.0,
+    "recommendation": "test",
+    "citations_count": 5
+  },
+  {
+    "run_id": "SR-016",
+    "world_id": "northlight-studio",
+    "business": "Northlight Studio",
+    "question": "Offer 15% discount on fixed-price projects for 4 weeks",
+    "decision": {
+      "lever": "promotion",
+      "group": "projects",
+      "change": 0.15,
+      "start": 1,
+      "duration": 4,
+      "title": "Run a 15% Projects promotion"
+    },
+    "seed": 42016,
+    "memory_on": false,
+    "timestamp": "2026-11-07T16:01:41.537655+00:00",
+    "response_time_ms": 272.5,
+    "profit_delta": {
+      "p10": -959547.6257577148,
+      "p50": -6116.955724470288,
+      "p90": 965828.5146094759
+    },
+    "loss_chance": 0.5028,
+    "min_cash": -1937495.7433754466,
+    "min_week": 1,
+    "negative_cash_chance": 1.0,
+    "recommendation": "test",
+    "citations_count": 0
+  },
+  {
+    "run_id": "SR-017",
+    "world_id": "northlight-studio",
+    "business": "Northlight Studio",
+    "question": "Increase LinkedIn lead-gen ads by 50% for 4 weeks",
+    "decision": {
+      "lever": "ads",
+      "group": "retainers",
+      "change": 0.5,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Retainers ads by +50%"
+    },
+    "seed": 42017,
+    "memory_on": true,
+    "timestamp": "2026-11-07T16:01:44.958156+00:00",
+    "response_time_ms": 3420.4,
+    "profit_delta": {
+      "p10": -163274.5529624878,
+      "p50": 395557.0588295565,
+      "p90": 1149366.7465847558
+    },
+    "loss_chance": 0.1936,
+    "min_cash": -1939491.191813183,
+    "min_week": 1,
+    "negative_cash_chance": 1.0,
+    "recommendation": "plan",
+    "citations_count": 5
+  },
+  {
+    "run_id": "SR-018",
+    "world_id": "northlight-studio",
+    "business": "Northlight Studio",
+    "question": "Increase LinkedIn lead-gen ads by 50% for 4 weeks",
+    "decision": {
+      "lever": "ads",
+      "group": "retainers",
+      "change": 0.5,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Retainers ads by +50%"
+    },
+    "seed": 42018,
+    "memory_on": false,
+    "timestamp": "2026-11-07T16:01:45.228720+00:00",
+    "response_time_ms": 270.5,
+    "profit_delta": {
+      "p10": -152189.7177612222,
+      "p50": 450278.66488915106,
+      "p90": 1345734.0387298896
+    },
+    "loss_chance": 0.1758,
+    "min_cash": -1937762.445234376,
+    "min_week": 1,
+    "negative_cash_chance": 1.0,
+    "recommendation": "plan",
+    "citations_count": 0
+  },
+  {
+    "run_id": "SR-019",
+    "world_id": "northlight-studio",
+    "business": "Northlight Studio",
+    "question": "Hire contractor capacity with 300 project units",
+    "decision": {
+      "lever": "price",
+      "group": "projects",
+      "change": 0.1,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Projects price by +10%"
+    },
+    "seed": 42019,
+    "memory_on": true,
+    "timestamp": "2026-11-07T16:01:48.661905+00:00",
+    "response_time_ms": 3433.0,
+    "profit_delta": {
+      "p10": -84394.21744960251,
+      "p50": 253013.2748824819,
+      "p90": 591562.1264455703
+    },
+    "loss_chance": 0.1674,
+    "min_cash": -1943571.7682707272,
+    "min_week": 1,
+    "negative_cash_chance": 1.0,
+    "recommendation": "plan",
+    "citations_count": 5
+  },
+  {
+    "run_id": "SR-020",
+    "world_id": "northlight-studio",
+    "business": "Northlight Studio",
+    "question": "Hire contractor capacity with 300 project units",
+    "decision": {
+      "lever": "price",
+      "group": "projects",
+      "change": 0.1,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Projects price by +10%"
+    },
+    "seed": 42020,
+    "memory_on": false,
+    "timestamp": "2026-11-07T16:01:48.927501+00:00",
+    "response_time_ms": 265.5,
+    "profit_delta": {
+      "p10": -439758.0875981039,
+      "p50": 39236.0898350975,
+      "p90": 532671.923490808
+    },
+    "loss_chance": 0.4618,
+    "min_cash": -1943542.9257025905,
+    "min_week": 1,
+    "negative_cash_chance": 1.0,
+    "recommendation": "test",
+    "citations_count": 0
+  },
+  {
+    "run_id": "SR-021",
+    "world_id": "northlight-studio",
+    "business": "Northlight Studio",
+    "question": "Raise fixed-price project rates by 12% for 4 weeks",
+    "decision": {
+      "lever": "price",
+      "group": "projects",
+      "change": 0.12,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Projects price by +12%"
+    },
+    "seed": 42021,
+    "memory_on": true,
+    "timestamp": "2026-11-07T16:01:51.768787+00:00",
+    "response_time_ms": 2841.1,
+    "profit_delta": {
+      "p10": -78084.2328677811,
+      "p50": 295194.0713602938,
+      "p90": 655309.2331253181
+    },
+    "loss_chance": 0.1524,
+    "min_cash": -1940656.9559404212,
+    "min_week": 1,
+    "negative_cash_chance": 1.0,
+    "recommendation": "plan",
+    "citations_count": 5
+  },
+  {
+    "run_id": "SR-022",
+    "world_id": "northlight-studio",
+    "business": "Northlight Studio",
+    "question": "Raise fixed-price project rates by 12% for 4 weeks",
+    "decision": {
+      "lever": "price",
+      "group": "projects",
+      "change": 0.12,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Projects price by +12%"
+    },
+    "seed": 42022,
+    "memory_on": false,
+    "timestamp": "2026-11-07T16:01:52.035037+00:00",
+    "response_time_ms": 266.2,
+    "profit_delta": {
+      "p10": -514025.6142135691,
+      "p50": 30422.65414302778,
+      "p90": 605044.4151856704
+    },
+    "loss_chance": 0.4732,
+    "min_cash": -1946373.4865675974,
+    "min_week": 1,
+    "negative_cash_chance": 1.0,
+    "recommendation": "test",
+    "citations_count": 0
+  },
+  {
+    "run_id": "SR-023",
+    "world_id": "northlight-studio",
+    "business": "Northlight Studio",
+    "question": "Cut marketing spend by 40% for 6 weeks",
+    "decision": {
+      "lever": "ads",
+      "group": "retainers",
+      "change": 0.4,
+      "start": 1,
+      "duration": 6,
+      "title": "Change Retainers ads by +40%"
+    },
+    "seed": 42023,
+    "memory_on": true,
+    "timestamp": "2026-11-07T16:01:54.951605+00:00",
+    "response_time_ms": 2916.4,
+    "profit_delta": {
+      "p10": -444990.93704024394,
+      "p50": 358261.1291008727,
+      "p90": 1272685.463847858
+    },
+    "loss_chance": 0.2944,
+    "min_cash": -1939298.4023305555,
+    "min_week": 1,
+    "negative_cash_chance": 1.0,
+    "recommendation": "test",
+    "citations_count": 5
+  },
+  {
+    "run_id": "SR-024",
+    "world_id": "northlight-studio",
+    "business": "Northlight Studio",
+    "question": "Cut marketing spend by 40% for 6 weeks",
+    "decision": {
+      "lever": "ads",
+      "group": "retainers",
+      "change": 0.4,
+      "start": 1,
+      "duration": 6,
+      "title": "Change Retainers ads by +40%"
+    },
+    "seed": 42024,
+    "memory_on": false,
+    "timestamp": "2026-11-07T16:01:55.252764+00:00",
+    "response_time_ms": 301.1,
+    "profit_delta": {
+      "p10": -290748.3654871471,
+      "p50": 520600.2865266969,
+      "p90": 1576612.851823984
+    },
+    "loss_chance": 0.2108,
+    "min_cash": -1941132.3093943237,
+    "min_week": 1,
+    "negative_cash_chance": 1.0,
+    "recommendation": "plan",
+    "citations_count": 0
+  },
+  {
+    "run_id": "SR-025",
+    "world_id": "brew-lane-cafe",
+    "business": "Brew Lane Caf\u00e9",
+    "question": "Increase dine-in menu prices by 8% for 4 weeks",
+    "decision": {
+      "lever": "price",
+      "group": "dine_in",
+      "change": 0.08,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Dine In price by +8%"
+    },
+    "seed": 42025,
+    "memory_on": true,
+    "timestamp": "2026-11-07T16:02:04.332965+00:00",
+    "response_time_ms": 9078.1,
+    "profit_delta": {
+      "p10": 708.8493688295409,
+      "p50": 75313.448204735,
+      "p90": 151835.99395075373
+    },
+    "loss_chance": 0.0972,
+    "min_cash": 789631.0164190752,
+    "min_week": 2,
+    "negative_cash_chance": 0.0,
+    "recommendation": "plan",
+    "citations_count": 5
+  },
+  {
+    "run_id": "SR-026",
+    "world_id": "brew-lane-cafe",
+    "business": "Brew Lane Caf\u00e9",
+    "question": "Increase dine-in menu prices by 8% for 4 weeks",
+    "decision": {
+      "lever": "price",
+      "group": "dine_in",
+      "change": 0.08,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Dine In price by +8%"
+    },
+    "seed": 42026,
+    "memory_on": false,
+    "timestamp": "2026-11-07T16:02:04.639890+00:00",
+    "response_time_ms": 306.9,
+    "profit_delta": {
+      "p10": -91018.72234533151,
+      "p50": 9316.802385633955,
+      "p90": 115818.42275828462
+    },
+    "loss_chance": 0.4576,
+    "min_cash": 768179.4959581888,
+    "min_week": 2,
+    "negative_cash_chance": 0.0,
+    "recommendation": "plan",
+    "citations_count": 0
+  },
+  {
+    "run_id": "SR-027",
+    "world_id": "brew-lane-cafe",
+    "business": "Brew Lane Caf\u00e9",
+    "question": "Offer 20% weekday promotion on dine-in for 2 weeks",
+    "decision": {
+      "lever": "promotion",
+      "group": "dine_in",
+      "change": 0.2,
+      "start": 1,
+      "duration": 2,
+      "title": "Run a 20% Dine In promotion"
+    },
+    "seed": 42027,
+    "memory_on": true,
+    "timestamp": "2026-11-07T16:02:25.159187+00:00",
+    "response_time_ms": 20519.1,
+    "profit_delta": {
+      "p10": -165900.46024064143,
+      "p50": -112912.14259501408,
+      "p90": -54401.47197182666
+    },
+    "loss_chance": 0.993,
+    "min_cash": 700470.1292235614,
+    "min_week": 4,
+    "negative_cash_chance": 0.0,
+    "recommendation": "test",
+    "citations_count": 4
+  },
+  {
+    "run_id": "SR-028",
+    "world_id": "brew-lane-cafe",
+    "business": "Brew Lane Caf\u00e9",
+    "question": "Offer 20% weekday promotion on dine-in for 2 weeks",
+    "decision": {
+      "lever": "promotion",
+      "group": "dine_in",
+      "change": 0.2,
+      "start": 1,
+      "duration": 2,
+      "title": "Run a 20% Dine In promotion"
+    },
+    "seed": 42028,
+    "memory_on": false,
+    "timestamp": "2026-11-07T16:02:25.390916+00:00",
+    "response_time_ms": 231.7,
+    "profit_delta": {
+      "p10": -160480.14899847072,
+      "p50": -49278.43103633551,
+      "p90": 65796.66427256049
+    },
+    "loss_chance": 0.7104,
+    "min_cash": 763435.3086724165,
+    "min_week": 2,
+    "negative_cash_chance": 0.0,
+    "recommendation": "test",
+    "citations_count": 0
+  },
+  {
+    "run_id": "SR-029",
+    "world_id": "brew-lane-cafe",
+    "business": "Brew Lane Caf\u00e9",
+    "question": "Increase delivery promotion ads by 30% for 4 weeks",
+    "decision": {
+      "lever": "ads",
+      "group": "delivery",
+      "change": 0.3,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Delivery ads by +30%"
+    },
+    "seed": 42029,
+    "memory_on": true,
+    "timestamp": "2026-11-07T16:02:25.650935+00:00",
+    "response_time_ms": 259.9,
+    "profit_delta": {
+      "p10": -37518.94535667096,
+      "p50": 19899.710264316695,
+      "p90": 85806.7056803366
+    },
+    "loss_chance": 0.3306,
+    "min_cash": 773090.5830356022,
+    "min_week": 2,
+    "negative_cash_chance": 0.0,
+    "recommendation": "plan",
+    "citations_count": 4
+  },
+  {
+    "run_id": "SR-030",
+    "world_id": "brew-lane-cafe",
+    "business": "Brew Lane Caf\u00e9",
+    "question": "Increase delivery promotion ads by 30% for 4 weeks",
+    "decision": {
+      "lever": "ads",
+      "group": "delivery",
+      "change": 0.3,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Delivery ads by +30%"
+    },
+    "seed": 42030,
+    "memory_on": false,
+    "timestamp": "2026-11-07T16:02:25.890159+00:00",
+    "response_time_ms": 239.2,
+    "profit_delta": {
+      "p10": -19634.44087614033,
+      "p50": 56472.62208741809,
+      "p90": 201446.28426786637
+    },
+    "loss_chance": 0.1864,
+    "min_cash": 789158.6304003138,
+    "min_week": 2,
+    "negative_cash_chance": 0.0,
+    "recommendation": "plan",
+    "citations_count": 0
+  },
+  {
+    "run_id": "SR-031",
+    "world_id": "brew-lane-cafe",
+    "business": "Brew Lane Caf\u00e9",
+    "question": "Restock 1500 produce batches from FreshFarms",
+    "decision": {
+      "lever": "restock",
+      "group": "dine_in",
+      "change": 250,
+      "start": 1,
+      "duration": 1,
+      "title": "Restock Dine In with 250 extra units"
+    },
+    "seed": 42031,
+    "memory_on": true,
+    "timestamp": "2026-11-07T16:02:26.139793+00:00",
+    "response_time_ms": 249.5,
+    "profit_delta": {
+      "p10": -16097.280130967709,
+      "p50": 170.96085208908457,
+      "p90": 16451.443722224645
+    },
+    "loss_chance": 0.4954,
+    "min_cash": 721514.6231003668,
+    "min_week": 2,
+    "negative_cash_chance": 0.0,
+    "recommendation": "plan",
+    "citations_count": 4
+  },
+  {
+    "run_id": "SR-032",
+    "world_id": "brew-lane-cafe",
+    "business": "Brew Lane Caf\u00e9",
+    "question": "Restock 1500 produce batches from FreshFarms",
+    "decision": {
+      "lever": "restock",
+      "group": "dine_in",
+      "change": 250,
+      "start": 1,
+      "duration": 1,
+      "title": "Restock Dine In with 250 extra units"
+    },
+    "seed": 42032,
+    "memory_on": false,
+    "timestamp": "2026-11-07T16:02:26.338459+00:00",
+    "response_time_ms": 198.6,
+    "profit_delta": {
+      "p10": -15898.854607455783,
+      "p50": 246.67417158265903,
+      "p90": 16189.583193482837
+    },
+    "loss_chance": 0.4936,
+    "min_cash": 720813.7417460144,
+    "min_week": 2,
+    "negative_cash_chance": 0.0,
+    "recommendation": "plan",
+    "citations_count": 0
+  },
+  {
+    "run_id": "SR-033",
+    "world_id": "brew-lane-cafe",
+    "business": "Brew Lane Caf\u00e9",
+    "question": "Lower delivery prices by 5% for 4 weeks",
+    "decision": {
+      "lever": "price",
+      "group": "delivery",
+      "change": -0.05,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Delivery price by -5%"
+    },
+    "seed": 42033,
+    "memory_on": true,
+    "timestamp": "2026-11-07T16:02:26.627194+00:00",
+    "response_time_ms": 288.6,
+    "profit_delta": {
+      "p10": -74916.05475799015,
+      "p50": -22313.838508778306,
+      "p90": 31350.240459105164
+    },
+    "loss_chance": 0.7044,
+    "min_cash": 758321.9607179302,
+    "min_week": 2,
+    "negative_cash_chance": 0.0,
+    "recommendation": "test",
+    "citations_count": 4
+  },
+  {
+    "run_id": "SR-034",
+    "world_id": "brew-lane-cafe",
+    "business": "Brew Lane Caf\u00e9",
+    "question": "Lower delivery prices by 5% for 4 weeks",
+    "decision": {
+      "lever": "price",
+      "group": "delivery",
+      "change": -0.05,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Delivery price by -5%"
+    },
+    "seed": 42034,
+    "memory_on": false,
+    "timestamp": "2026-11-07T16:02:26.884969+00:00",
+    "response_time_ms": 257.7,
+    "profit_delta": {
+      "p10": -72395.61402737719,
+      "p50": -11705.548997439102,
+      "p90": 48926.094575185576
+    },
+    "loss_chance": 0.6014,
+    "min_cash": 762842.1955973359,
+    "min_week": 2,
+    "negative_cash_chance": 0.0,
+    "recommendation": "test",
+    "citations_count": 0
+  },
+  {
+    "run_id": "SR-035",
+    "world_id": "brew-lane-cafe",
+    "business": "Brew Lane Caf\u00e9",
+    "question": "Cut ad spend by 25% for 4 weeks",
+    "decision": {
+      "lever": "ads",
+      "group": "dine_in",
+      "change": 0.25,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Dine In ads by +25%"
+    },
+    "seed": 42035,
+    "memory_on": true,
+    "timestamp": "2026-11-07T16:02:27.136149+00:00",
+    "response_time_ms": 251.0,
+    "profit_delta": {
+      "p10": -31824.9431084608,
+      "p50": 41821.44960403684,
+      "p90": 122146.07122462403
+    },
+    "loss_chance": 0.2342,
+    "min_cash": 779175.6815851904,
+    "min_week": 2,
+    "negative_cash_chance": 0.0,
+    "recommendation": "plan",
+    "citations_count": 4
+  },
+  {
+    "run_id": "SR-036",
+    "world_id": "brew-lane-cafe",
+    "business": "Brew Lane Caf\u00e9",
+    "question": "Cut ad spend by 25% for 4 weeks",
+    "decision": {
+      "lever": "ads",
+      "group": "dine_in",
+      "change": 0.25,
+      "start": 1,
+      "duration": 4,
+      "title": "Change Dine In ads by +25%"
+    },
+    "seed": 42036,
+    "memory_on": false,
+    "timestamp": "2026-11-07T16:02:27.392706+00:00",
+    "response_time_ms": 256.5,
+    "profit_delta": {
+      "p10": -29198.75387154044,
+      "p50": 54099.64730025006,
+      "p90": 164383.65836937635
+    },
+    "loss_chance": 0.2126,
+    "min_cash": 784308.8098365539,
+    "min_week": 2,
+    "negative_cash_chance": 0.0,
+    "recommendation": "plan",
+    "citations_count": 0
+  }
+]

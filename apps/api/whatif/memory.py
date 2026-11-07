@@ -66,22 +66,41 @@ class HindsightMemory:
             self.last_error = str(exc)
         return True
 
-    async def aretain(self, kind: str, document_id: str, content: str, tags: list[str], timestamp: str | None = None) -> dict[str, Any]:
+    async def aretain(self, kind: str, document_id: str, content: str, tags: list[str], timestamp: str | None = None, retain_async: bool = False) -> dict[str, Any]:
         state = "local"
         client = self._get_client()
         if client and await self.aensure_bank():
             try:
                 await client.aretain(bank_id=self.bank_id, content=content, document_id=document_id, tags=tags,
-                                    timestamp=timestamp, context=f"WHATIF {kind}", update_mode="replace")
+                                    timestamp=timestamp, context=f"WHATIF {kind}", update_mode="replace", retain_async=retain_async)
                 state = "hindsight"
             except Exception as exc:
                 self.last_error = str(exc)
                 try:
-                    await client.aretain(bank_id=self.bank_id, content=content, document_id=document_id, tags=tags, timestamp=timestamp, context=f"WHATIF {kind}")
+                    await client.aretain(bank_id=self.bank_id, content=content, document_id=document_id, tags=tags, timestamp=timestamp, context=f"WHATIF {kind}", retain_async=retain_async)
                     state = "hindsight"
                 except Exception as retry_exc: self.last_error = str(retry_exc)
         self.store.add_memory_event(kind, document_id, content, tags, state)
         return {"state": state, "bank_id": self.bank_id if state == "hindsight" else None}
+
+    async def aretain_batch(self, items: list[dict[str, Any]], retain_async: bool = True) -> dict[str, Any]:
+        state = "local"
+        client = self._get_client()
+        if client and await self.aensure_bank():
+            try:
+                await client.aretain_batch(bank_id=self.bank_id, items=items, retain_async=retain_async)
+                state = "hindsight"
+            except Exception as exc:
+                self.last_error = str(exc)
+        for it in items:
+            self.store.add_memory_event(
+                it.get("context", "memory"),
+                it.get("document_id", ""),
+                it.get("content", ""),
+                it.get("tags", []),
+                state,
+            )
+        return {"state": state, "count": len(items)}
 
     def retain(self, kind: str, document_id: str, content: str, tags: list[str], timestamp: str | None = None) -> dict[str, Any]:
         state = "local"

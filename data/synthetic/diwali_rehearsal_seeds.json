@@ -1,0 +1,252 @@
+[
+  {
+    "seed": 1,
+    "memory_on": {
+      "profit_p10": -104206.47303812586,
+      "profit_p50": -42395.2031190224,
+      "profit_p90": 24358.290435287905,
+      "loss_chance": 0.8026,
+      "min_cash_p50": -2349138.943775992,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "test_min_cash_p50": -536929.2249887335,
+      "latency_ms": 515.4,
+      "recalled_items_count": 4
+    },
+    "memory_off": {
+      "profit_p10": -93165.34196136266,
+      "profit_p50": -20849.854883498225,
+      "profit_p90": 84457.37136936445,
+      "loss_chance": 0.623,
+      "min_cash_p50": -2259776.2311887764,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "latency_ms": 356.0
+    }
+  },
+  {
+    "seed": 2,
+    "memory_on": {
+      "profit_p10": -104555.03077789319,
+      "profit_p50": -42544.39335789661,
+      "profit_p90": 22554.403582197734,
+      "loss_chance": 0.7994,
+      "min_cash_p50": -2348893.537095082,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "test_min_cash_p50": -536215.04270982,
+      "latency_ms": 325.2,
+      "recalled_items_count": 4
+    },
+    "memory_off": {
+      "profit_p10": -93495.11507446866,
+      "profit_p50": -19466.873339256694,
+      "profit_p90": 78907.50862252692,
+      "loss_chance": 0.6126,
+      "min_cash_p50": -2259603.14332761,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "latency_ms": 373.0
+    }
+  },
+  {
+    "seed": 3,
+    "memory_on": {
+      "profit_p10": -102436.9258087727,
+      "profit_p50": -42338.44163776029,
+      "profit_p90": 24300.24747370918,
+      "loss_chance": 0.797,
+      "min_cash_p50": -2349984.998680924,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "test_min_cash_p50": -537304.3675847633,
+      "latency_ms": 358.0,
+      "recalled_items_count": 4
+    },
+    "memory_off": {
+      "profit_p10": -91048.77795907373,
+      "profit_p50": -20228.024545164382,
+      "profit_p90": 80668.13515230209,
+      "loss_chance": 0.624,
+      "min_cash_p50": -2260689.3518628636,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "latency_ms": 315.5
+    }
+  },
+  {
+    "seed": 4,
+    "memory_on": {
+      "profit_p10": -104415.65283990144,
+      "profit_p50": -40811.03533484972,
+      "profit_p90": 25373.407424605222,
+      "loss_chance": 0.795,
+      "min_cash_p50": -2348383.032866166,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "test_min_cash_p50": -536198.3191301469,
+      "latency_ms": 370.5,
+      "recalled_items_count": 4
+    },
+    "memory_off": {
+      "profit_p10": -93076.94026449439,
+      "profit_p50": -19370.147146579562,
+      "profit_p90": 88456.11409331142,
+      "loss_chance": 0.6132,
+      "min_cash_p50": -2258717.8800924057,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "latency_ms": 366.4
+    }
+  },
+  {
+    "seed": 5,
+    "memory_on": {
+      "profit_p10": -103141.39076338371,
+      "profit_p50": -43335.549785896845,
+      "profit_p90": 22288.092629229803,
+      "loss_chance": 0.8012,
+      "min_cash_p50": -2349403.9476099554,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "test_min_cash_p50": -537003.5520054554,
+      "latency_ms": 357.5,
+      "recalled_items_count": 4
+    },
+    "memory_off": {
+      "profit_p10": -92123.24806320712,
+      "profit_p50": -21320.781834022753,
+      "profit_p90": 85117.44344856229,
+      "loss_chance": 0.6218,
+      "min_cash_p50": -2260090.200346059,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "latency_ms": 338.4
+    }
+  },
+  {
+    "seed": 6,
+    "memory_on": {
+      "profit_p10": -101802.83648499922,
+      "profit_p50": -41943.4378640435,
+      "profit_p90": 23806.871267365303,
+      "loss_chance": 0.796,
+      "min_cash_p50": -2349390.05897695,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "test_min_cash_p50": -537111.3033186509,
+      "latency_ms": 343.7,
+      "recalled_items_count": 4
+    },
+    "memory_off": {
+      "profit_p10": -91200.75632402518,
+      "profit_p50": -19275.58429843044,
+      "profit_p90": 84256.79404887982,
+      "loss_chance": 0.6172,
+      "min_cash_p50": -2259053.6272323644,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "latency_ms": 344.5
+    }
+  },
+  {
+    "seed": 7,
+    "memory_on": {
+      "profit_p10": -104001.72176354496,
+      "profit_p50": -43514.51641030461,
+      "profit_p90": 22672.366147293924,
+      "loss_chance": 0.8008,
+      "min_cash_p50": -2349364.628387696,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "test_min_cash_p50": -537231.8557897077,
+      "latency_ms": 354.1,
+      "recalled_items_count": 4
+    },
+    "memory_off": {
+      "profit_p10": -91548.23274959733,
+      "profit_p50": -20212.188223721234,
+      "profit_p90": 85978.34602281493,
+      "loss_chance": 0.6192,
+      "min_cash_p50": -2259088.3580545364,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "latency_ms": 339.2
+    }
+  },
+  {
+    "seed": 8,
+    "memory_on": {
+      "profit_p10": -104530.47874668657,
+      "profit_p50": -43134.05987560762,
+      "profit_p90": 22679.189219251562,
+      "loss_chance": 0.7978,
+      "min_cash_p50": -2349937.7214002702,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "test_min_cash_p50": -537165.8667200422,
+      "latency_ms": 344.3,
+      "recalled_items_count": 4
+    },
+    "memory_off": {
+      "profit_p10": -93698.47358088836,
+      "profit_p50": -21055.570835787854,
+      "profit_p90": 83895.16663370997,
+      "loss_chance": 0.6242,
+      "min_cash_p50": -2260001.8192665973,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "latency_ms": 349.6
+    }
+  },
+  {
+    "seed": 9,
+    "memory_on": {
+      "profit_p10": -103130.29918978731,
+      "profit_p50": -41757.82696151076,
+      "profit_p90": 24134.54982745994,
+      "loss_chance": 0.7902,
+      "min_cash_p50": -2348941.179849892,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "test_min_cash_p50": -536482.925524241,
+      "latency_ms": 361.5,
+      "recalled_items_count": 4
+    },
+    "memory_off": {
+      "profit_p10": -91081.7485376406,
+      "profit_p50": -18433.086470537524,
+      "profit_p90": 87748.47737837509,
+      "loss_chance": 0.6146,
+      "min_cash_p50": -2258626.529981292,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "latency_ms": 322.1
+    }
+  },
+  {
+    "seed": 10,
+    "memory_on": {
+      "profit_p10": -104025.25563567589,
+      "profit_p50": -42889.20845785123,
+      "profit_p90": 25813.9691307053,
+      "loss_chance": 0.7942,
+      "min_cash_p50": -2348649.130119495,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "test_min_cash_p50": -536579.9821927466,
+      "latency_ms": 333.9,
+      "recalled_items_count": 4
+    },
+    "memory_off": {
+      "profit_p10": -92501.35725734572,
+      "profit_p50": -21836.337208577028,
+      "profit_p90": 81056.24036129884,
+      "loss_chance": 0.6216,
+      "min_cash_p50": -2259009.6867989386,
+      "min_week": 2,
+      "negative_cash_chance": 1.0,
+      "latency_ms": 330.6
+    }
+  }
+]
