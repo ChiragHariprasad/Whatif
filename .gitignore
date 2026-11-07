@@ -1,0 +1,14 @@
+.env
+.venv/
+.uv-cache/
+.uv-python/
+.pip-cache/
+.runtime-pkgs/
+.pytest_cache/
+.whatif-test-*.db
+__pycache__/
+*.py[cod]
+*.db
+node_modules/
+dist/
+

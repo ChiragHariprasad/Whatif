@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#17261f" />
+    <title>WHATIF · Decide with receipts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <aside class="rail">
+      <a class="brand" href="#home" aria-label="WHATIF home"><span class="brand-mark">W</span><span>WHATIF<small>decision ledger</small></span></a>
+      <nav class="nav" aria-label="Primary navigation">
+        <button data-page="home" class="active"><i>⌂</i>Overview</button>
+        <button data-page="decisions"><i>◫</i>Decisions</button>
+        <button data-page="partners"><i>↗</i>Reality layer</button>
+        <button data-page="learn"><i>◌</i>Learn</button>
+      </nav>
+      <div class="rail-bottom"><button class="demo-button" id="advanceDemo">Demo <span id="weekPill">week —</span></button><p>Planning aid<br>not financial advice</p></div>
+    </aside>
+    <main>
+      <header class="topbar"><div><p class="eyebrow">Lumen &amp; Wick Candle Co.</p><h1 id="pageTitle">A clearer next move.</h1></div><div class="top-actions"><span class="memory-status" id="memoryStatus">Memory checking…</span><button class="avatar" title="Settings">M</button></div></header>
+      <section id="app" aria-live="polite"></section>
+    </main>
+    <button class="ask-fab" id="askFab"><span>＋</span> Ask what if</button>
+    <nav class="mobile-nav" aria-label="Mobile navigation"><button data-page="home">⌂<span>Home</span></button><button data-page="decisions">◫<span>Decisions</span></button><button id="mobileAsk">＋<span>Ask</span></button><button data-page="partners">↗<span>Partners</span></button><button data-page="learn">◌<span>Learn</span></button></nav>
+    <dialog id="modal"></dialog>
+    <div id="toast" role="status"></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

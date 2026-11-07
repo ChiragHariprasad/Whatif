@@ -1,0 +1,8 @@
+{
+  "note": "Synthetic demo ground truth. Do not feed it to the learner.",
+  "premium_elasticity": -0.55,
+  "core_elasticity": -2.15,
+  "ad_half_saturation": 1.25,
+  "rajan_jars_ratio": 1.6,
+  "hedge_extra_days": 3.0
+}

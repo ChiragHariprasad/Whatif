@@ -1,0 +1,848 @@
+{
+  "seed": 42017,
+  "business": "Lumen & Wick Candle Co.",
+  "decisions": [
+    {
+      "id": "S-001",
+      "week": 3,
+      "date": "2025-07-28",
+      "lever": "price",
+      "group": "premium",
+      "change": 0.1,
+      "actual_effect": 53500.0,
+      "confounded": false
+    },
+    {
+      "id": "S-002",
+      "week": 4,
+      "date": "2025-08-04",
+      "lever": "price",
+      "group": "core",
+      "change": 0.08,
+      "actual_effect": 8600.0,
+      "confounded": false
+    },
+    {
+      "id": "S-003",
+      "week": 5,
+      "date": "2025-08-11",
+      "lever": "ads",
+      "group": "core",
+      "change": 0.2,
+      "actual_effect": 15300.0,
+      "confounded": false
+    },
+    {
+      "id": "S-004",
+      "week": 6,
+      "date": "2025-08-18",
+      "lever": "promotion",
+      "group": "core",
+      "change": 0.1,
+      "actual_effect": 11200.0,
+      "confounded": false
+    },
+    {
+      "id": "S-005",
+      "week": 7,
+      "date": "2025-08-25",
+      "lever": "restock",
+      "group": "premium",
+      "change": 260,
+      "actual_effect": 7700.0,
+      "confounded": false
+    },
+    {
+      "id": "S-006",
+      "week": 8,
+      "date": "2025-09-01",
+      "lever": "price",
+      "group": "premium",
+      "change": 0.1,
+      "actual_effect": 28100.0,
+      "confounded": true
+    },
+    {
+      "id": "S-007",
+      "week": 9,
+      "date": "2025-09-08",
+      "lever": "price",
+      "group": "core",
+      "change": 0.08,
+      "actual_effect": 11800.0,
+      "confounded": false
+    },
+    {
+      "id": "S-008",
+      "week": 10,
+      "date": "2025-09-15",
+      "lever": "ads",
+      "group": "core",
+      "change": 0.2,
+      "actual_effect": 15700.0,
+      "confounded": false
+    },
+    {
+      "id": "S-009",
+      "week": 11,
+      "date": "2025-09-22",
+      "lever": "promotion",
+      "group": "core",
+      "change": 0.1,
+      "actual_effect": 20300.0,
+      "confounded": false
+    },
+    {
+      "id": "S-010",
+      "week": 12,
+      "date": "2025-09-29",
+      "lever": "restock",
+      "group": "premium",
+      "change": 260,
+      "actual_effect": 7200.0,
+      "confounded": false
+    },
+    {
+      "id": "S-011",
+      "week": 13,
+      "date": "2025-10-06",
+      "lever": "price",
+      "group": "premium",
+      "change": 0.1,
+      "actual_effect": 32000.0,
+      "confounded": false
+    },
+    {
+      "id": "S-012",
+      "week": 14,
+      "date": "2025-10-13",
+      "lever": "price",
+      "group": "core",
+      "change": 0.08,
+      "actual_effect": 16700.0,
+      "confounded": false
+    },
+    {
+      "id": "S-013",
+      "week": 15,
+      "date": "2025-10-20",
+      "lever": "ads",
+      "group": "core",
+      "change": 0.2,
+      "actual_effect": 10800.0,
+      "confounded": false
+    },
+    {
+      "id": "S-014",
+      "week": 16,
+      "date": "2025-10-27",
+      "lever": "promotion",
+      "group": "core",
+      "change": 0.1,
+      "actual_effect": 4100.0,
+      "confounded": false
+    },
+    {
+      "id": "S-015",
+      "week": 17,
+      "date": "2025-11-03",
+      "lever": "restock",
+      "group": "premium",
+      "change": 260,
+      "actual_effect": 8600.0,
+      "confounded": true
+    },
+    {
+      "id": "S-016",
+      "week": 18,
+      "date": "2025-11-10",
+      "lever": "price",
+      "group": "premium",
+      "change": 0.1,
+      "actual_effect": 34500.0,
+      "confounded": false
+    },
+    {
+      "id": "S-017",
+      "week": 19,
+      "date": "2025-11-17",
+      "lever": "price",
+      "group": "core",
+      "change": 0.08,
+      "actual_effect": 8200.0,
+      "confounded": false
+    },
+    {
+      "id": "S-018",
+      "week": 20,
+      "date": "2025-11-24",
+      "lever": "ads",
+      "group": "core",
+      "change": 0.2,
+      "actual_effect": 12100.0,
+      "confounded": false
+    },
+    {
+      "id": "S-019",
+      "week": 21,
+      "date": "2025-12-01",
+      "lever": "promotion",
+      "group": "core",
+      "change": 0.1,
+      "actual_effect": 11200.0,
+      "confounded": false
+    },
+    {
+      "id": "S-020",
+      "week": 22,
+      "date": "2025-12-08",
+      "lever": "restock",
+      "group": "premium",
+      "change": 260,
+      "actual_effect": 7300.0,
+      "confounded": false
+    },
+    {
+      "id": "S-021",
+      "week": 23,
+      "date": "2025-12-15",
+      "lever": "price",
+      "group": "premium",
+      "change": 0.1,
+      "actual_effect": 31700.0,
+      "confounded": false
+    },
+    {
+      "id": "S-022",
+      "week": 24,
+      "date": "2025-12-22",
+      "lever": "price",
+      "group": "core",
+      "change": 0.08,
+      "actual_effect": 10900.0,
+      "confounded": false
+    },
+    {
+      "id": "S-023",
+      "week": 25,
+      "date": "2025-12-29",
+      "lever": "ads",
+      "group": "core",
+      "change": 0.2,
+      "actual_effect": 24400.0,
+      "confounded": true
+    },
+    {
+      "id": "S-024",
+      "week": 26,
+      "date": "2026-01-05",
+      "lever": "promotion",
+      "group": "core",
+      "change": 0.1,
+      "actual_effect": 13700.0,
+      "confounded": false
+    },
+    {
+      "id": "S-025",
+      "week": 27,
+      "date": "2026-01-12",
+      "lever": "restock",
+      "group": "premium",
+      "change": 260,
+      "actual_effect": 6900.0,
+      "confounded": false
+    },
+    {
+      "id": "S-026",
+      "week": 28,
+      "date": "2026-01-19",
+      "lever": "price",
+      "group": "premium",
+      "change": 0.1,
+      "actual_effect": 32400.0,
+      "confounded": false
+    },
+    {
+      "id": "S-027",
+      "week": 29,
+      "date": "2026-01-26",
+      "lever": "price",
+      "group": "core",
+      "change": 0.08,
+      "actual_effect": 8300.0,
+      "confounded": false
+    },
+    {
+      "id": "S-028",
+      "week": 30,
+      "date": "2026-02-02",
+      "lever": "ads",
+      "group": "core",
+      "change": 0.2,
+      "actual_effect": 10700.0,
+      "confounded": false
+    },
+    {
+      "id": "S-029",
+      "week": 31,
+      "date": "2026-02-09",
+      "lever": "promotion",
+      "group": "core",
+      "change": 0.1,
+      "actual_effect": 11800.0,
+      "confounded": false
+    },
+    {
+      "id": "S-030",
+      "week": 32,
+      "date": "2026-02-16",
+      "lever": "restock",
+      "group": "premium",
+      "change": 260,
+      "actual_effect": 5500.0,
+      "confounded": false
+    }
+  ],
+  "promises": [
+    {
+      "id": "SP-001",
+      "week": 0,
+      "partner": "rajan-jars",
+      "quote": "Rajan Jars: the order should be ready in 10 days.",
+      "promised_days": 10,
+      "actual_days": 20.4,
+      "hedged": true
+    },
+    {
+      "id": "SP-002",
+      "week": 1,
+      "partner": "aarav-waxworks",
+      "quote": "Aarav Waxworks: the order hopefully ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 10.4,
+      "hedged": true
+    },
+    {
+      "id": "SP-003",
+      "week": 2,
+      "partner": "packwell",
+      "quote": "PackWell Packaging: the order expect ready in 5 days.",
+      "promised_days": 5,
+      "actual_days": 8.1,
+      "hedged": true
+    },
+    {
+      "id": "SP-004",
+      "week": 3,
+      "partner": "inklane",
+      "quote": "InkLane Printers: the order  ready in 4 days.",
+      "promised_days": 4,
+      "actual_days": 2.8,
+      "hedged": false
+    },
+    {
+      "id": "SP-005",
+      "week": 4,
+      "partner": "speedy-courier",
+      "quote": "Speedy Courier: the order should be ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 10.5,
+      "hedged": true
+    },
+    {
+      "id": "SP-006",
+      "week": 5,
+      "partner": "rajan-jars",
+      "quote": "Rajan Jars: the order hopefully ready in 10 days.",
+      "promised_days": 10,
+      "actual_days": 17.6,
+      "hedged": true
+    },
+    {
+      "id": "SP-007",
+      "week": 6,
+      "partner": "aarav-waxworks",
+      "quote": "Aarav Waxworks: the order expect ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 9.8,
+      "hedged": true
+    },
+    {
+      "id": "SP-008",
+      "week": 7,
+      "partner": "packwell",
+      "quote": "PackWell Packaging: the order  ready in 5 days.",
+      "promised_days": 5,
+      "actual_days": 4.6,
+      "hedged": false
+    },
+    {
+      "id": "SP-009",
+      "week": 8,
+      "partner": "inklane",
+      "quote": "InkLane Printers: the order should be ready in 4 days.",
+      "promised_days": 4,
+      "actual_days": 6.0,
+      "hedged": true
+    },
+    {
+      "id": "SP-010",
+      "week": 9,
+      "partner": "speedy-courier",
+      "quote": "Speedy Courier: the order hopefully ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 12.7,
+      "hedged": true
+    },
+    {
+      "id": "SP-011",
+      "week": 10,
+      "partner": "rajan-jars",
+      "quote": "Rajan Jars: the order expect ready in 10 days.",
+      "promised_days": 10,
+      "actual_days": 20.9,
+      "hedged": true
+    },
+    {
+      "id": "SP-012",
+      "week": 11,
+      "partner": "aarav-waxworks",
+      "quote": "Aarav Waxworks: the order  ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 9.0,
+      "hedged": false
+    },
+    {
+      "id": "SP-013",
+      "week": 12,
+      "partner": "packwell",
+      "quote": "PackWell Packaging: the order should be ready in 5 days.",
+      "promised_days": 5,
+      "actual_days": 7.1,
+      "hedged": true
+    },
+    {
+      "id": "SP-014",
+      "week": 13,
+      "partner": "inklane",
+      "quote": "InkLane Printers: the order hopefully ready in 4 days.",
+      "promised_days": 4,
+      "actual_days": 10.1,
+      "hedged": true
+    },
+    {
+      "id": "SP-015",
+      "week": 14,
+      "partner": "speedy-courier",
+      "quote": "Speedy Courier: the order expect ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 10.4,
+      "hedged": true
+    },
+    {
+      "id": "SP-016",
+      "week": 15,
+      "partner": "rajan-jars",
+      "quote": "Rajan Jars: the order  ready in 10 days.",
+      "promised_days": 10,
+      "actual_days": 16.4,
+      "hedged": false
+    },
+    {
+      "id": "SP-017",
+      "week": 16,
+      "partner": "aarav-waxworks",
+      "quote": "Aarav Waxworks: the order should be ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 12.2,
+      "hedged": true
+    },
+    {
+      "id": "SP-018",
+      "week": 17,
+      "partner": "packwell",
+      "quote": "PackWell Packaging: the order hopefully ready in 5 days.",
+      "promised_days": 5,
+      "actual_days": 8.5,
+      "hedged": true
+    },
+    {
+      "id": "SP-019",
+      "week": 18,
+      "partner": "inklane",
+      "quote": "InkLane Printers: the order expect ready in 4 days.",
+      "promised_days": 4,
+      "actual_days": 4.1,
+      "hedged": true
+    },
+    {
+      "id": "SP-020",
+      "week": 19,
+      "partner": "speedy-courier",
+      "quote": "Speedy Courier: the order  ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 8.2,
+      "hedged": false
+    },
+    {
+      "id": "SP-021",
+      "week": 20,
+      "partner": "rajan-jars",
+      "quote": "Rajan Jars: the order should be ready in 10 days.",
+      "promised_days": 10,
+      "actual_days": 17.6,
+      "hedged": true
+    },
+    {
+      "id": "SP-022",
+      "week": 21,
+      "partner": "aarav-waxworks",
+      "quote": "Aarav Waxworks: the order hopefully ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 9.9,
+      "hedged": true
+    },
+    {
+      "id": "SP-023",
+      "week": 22,
+      "partner": "packwell",
+      "quote": "PackWell Packaging: the order expect ready in 5 days.",
+      "promised_days": 5,
+      "actual_days": 8.0,
+      "hedged": true
+    },
+    {
+      "id": "SP-024",
+      "week": 23,
+      "partner": "inklane",
+      "quote": "InkLane Printers: the order  ready in 4 days.",
+      "promised_days": 4,
+      "actual_days": 4.6,
+      "hedged": false
+    },
+    {
+      "id": "SP-025",
+      "week": 24,
+      "partner": "speedy-courier",
+      "quote": "Speedy Courier: the order should be ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 9.6,
+      "hedged": true
+    },
+    {
+      "id": "SP-026",
+      "week": 25,
+      "partner": "rajan-jars",
+      "quote": "Rajan Jars: the order hopefully ready in 10 days.",
+      "promised_days": 10,
+      "actual_days": 18.1,
+      "hedged": true
+    },
+    {
+      "id": "SP-027",
+      "week": 26,
+      "partner": "aarav-waxworks",
+      "quote": "Aarav Waxworks: the order expect ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 8.3,
+      "hedged": true
+    },
+    {
+      "id": "SP-028",
+      "week": 27,
+      "partner": "packwell",
+      "quote": "PackWell Packaging: the order  ready in 5 days.",
+      "promised_days": 5,
+      "actual_days": 6.8,
+      "hedged": false
+    },
+    {
+      "id": "SP-029",
+      "week": 28,
+      "partner": "inklane",
+      "quote": "InkLane Printers: the order should be ready in 4 days.",
+      "promised_days": 4,
+      "actual_days": 4.6,
+      "hedged": true
+    },
+    {
+      "id": "SP-030",
+      "week": 29,
+      "partner": "speedy-courier",
+      "quote": "Speedy Courier: the order hopefully ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 13.0,
+      "hedged": true
+    },
+    {
+      "id": "SP-031",
+      "week": 30,
+      "partner": "rajan-jars",
+      "quote": "Rajan Jars: the order expect ready in 10 days.",
+      "promised_days": 10,
+      "actual_days": 18.4,
+      "hedged": true
+    },
+    {
+      "id": "SP-032",
+      "week": 31,
+      "partner": "aarav-waxworks",
+      "quote": "Aarav Waxworks: the order  ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 5.9,
+      "hedged": false
+    },
+    {
+      "id": "SP-033",
+      "week": 32,
+      "partner": "packwell",
+      "quote": "PackWell Packaging: the order should be ready in 5 days.",
+      "promised_days": 5,
+      "actual_days": 10.6,
+      "hedged": true
+    },
+    {
+      "id": "SP-034",
+      "week": 33,
+      "partner": "inklane",
+      "quote": "InkLane Printers: the order hopefully ready in 4 days.",
+      "promised_days": 4,
+      "actual_days": 8.6,
+      "hedged": true
+    },
+    {
+      "id": "SP-035",
+      "week": 34,
+      "partner": "speedy-courier",
+      "quote": "Speedy Courier: the order expect ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 11.8,
+      "hedged": true
+    },
+    {
+      "id": "SP-036",
+      "week": 35,
+      "partner": "rajan-jars",
+      "quote": "Rajan Jars: the order  ready in 10 days.",
+      "promised_days": 10,
+      "actual_days": 14.3,
+      "hedged": false
+    },
+    {
+      "id": "SP-037",
+      "week": 36,
+      "partner": "aarav-waxworks",
+      "quote": "Aarav Waxworks: the order should be ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 10.7,
+      "hedged": true
+    },
+    {
+      "id": "SP-038",
+      "week": 37,
+      "partner": "packwell",
+      "quote": "PackWell Packaging: the order hopefully ready in 5 days.",
+      "promised_days": 5,
+      "actual_days": 7.8,
+      "hedged": true
+    },
+    {
+      "id": "SP-039",
+      "week": 38,
+      "partner": "inklane",
+      "quote": "InkLane Printers: the order expect ready in 4 days.",
+      "promised_days": 4,
+      "actual_days": 6.6,
+      "hedged": true
+    },
+    {
+      "id": "SP-040",
+      "week": 39,
+      "partner": "speedy-courier",
+      "quote": "Speedy Courier: the order  ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 8.1,
+      "hedged": false
+    },
+    {
+      "id": "SP-041",
+      "week": 40,
+      "partner": "rajan-jars",
+      "quote": "Rajan Jars: the order should be ready in 10 days.",
+      "promised_days": 10,
+      "actual_days": 19.6,
+      "hedged": true
+    },
+    {
+      "id": "SP-042",
+      "week": 41,
+      "partner": "aarav-waxworks",
+      "quote": "Aarav Waxworks: the order hopefully ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 9.5,
+      "hedged": true
+    },
+    {
+      "id": "SP-043",
+      "week": 42,
+      "partner": "packwell",
+      "quote": "PackWell Packaging: the order expect ready in 5 days.",
+      "promised_days": 5,
+      "actual_days": 8.7,
+      "hedged": true
+    },
+    {
+      "id": "SP-044",
+      "week": 43,
+      "partner": "inklane",
+      "quote": "InkLane Printers: the order  ready in 4 days.",
+      "promised_days": 4,
+      "actual_days": 2.3,
+      "hedged": false
+    },
+    {
+      "id": "SP-045",
+      "week": 44,
+      "partner": "speedy-courier",
+      "quote": "Speedy Courier: the order should be ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 11.0,
+      "hedged": true
+    },
+    {
+      "id": "SP-046",
+      "week": 45,
+      "partner": "rajan-jars",
+      "quote": "Rajan Jars: the order hopefully ready in 10 days.",
+      "promised_days": 10,
+      "actual_days": 19.3,
+      "hedged": true
+    },
+    {
+      "id": "SP-047",
+      "week": 46,
+      "partner": "aarav-waxworks",
+      "quote": "Aarav Waxworks: the order expect ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 10.7,
+      "hedged": true
+    },
+    {
+      "id": "SP-048",
+      "week": 47,
+      "partner": "packwell",
+      "quote": "PackWell Packaging: the order  ready in 5 days.",
+      "promised_days": 5,
+      "actual_days": 9.9,
+      "hedged": false
+    },
+    {
+      "id": "SP-049",
+      "week": 48,
+      "partner": "inklane",
+      "quote": "InkLane Printers: the order should be ready in 4 days.",
+      "promised_days": 4,
+      "actual_days": 7.0,
+      "hedged": true
+    },
+    {
+      "id": "SP-050",
+      "week": 49,
+      "partner": "speedy-courier",
+      "quote": "Speedy Courier: the order hopefully ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 11.1,
+      "hedged": true
+    },
+    {
+      "id": "SP-051",
+      "week": 50,
+      "partner": "rajan-jars",
+      "quote": "Rajan Jars: the order expect ready in 10 days.",
+      "promised_days": 10,
+      "actual_days": 19.5,
+      "hedged": true
+    },
+    {
+      "id": "SP-052",
+      "week": 51,
+      "partner": "aarav-waxworks",
+      "quote": "Aarav Waxworks: the order  ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 6.5,
+      "hedged": false
+    },
+    {
+      "id": "SP-053",
+      "week": 0,
+      "partner": "packwell",
+      "quote": "PackWell Packaging: the order should be ready in 5 days.",
+      "promised_days": 5,
+      "actual_days": 7.1,
+      "hedged": true
+    },
+    {
+      "id": "SP-054",
+      "week": 1,
+      "partner": "inklane",
+      "quote": "InkLane Printers: the order hopefully ready in 4 days.",
+      "promised_days": 4,
+      "actual_days": 8.5,
+      "hedged": true
+    },
+    {
+      "id": "SP-055",
+      "week": 2,
+      "partner": "speedy-courier",
+      "quote": "Speedy Courier: the order expect ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 10.0,
+      "hedged": true
+    },
+    {
+      "id": "SP-056",
+      "week": 3,
+      "partner": "rajan-jars",
+      "quote": "Rajan Jars: the order  ready in 10 days.",
+      "promised_days": 10,
+      "actual_days": 15.2,
+      "hedged": false
+    },
+    {
+      "id": "SP-057",
+      "week": 4,
+      "partner": "aarav-waxworks",
+      "quote": "Aarav Waxworks: the order should be ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 13.1,
+      "hedged": true
+    },
+    {
+      "id": "SP-058",
+      "week": 5,
+      "partner": "packwell",
+      "quote": "PackWell Packaging: the order hopefully ready in 5 days.",
+      "promised_days": 5,
+      "actual_days": 8.3,
+      "hedged": true
+    },
+    {
+      "id": "SP-059",
+      "week": 6,
+      "partner": "inklane",
+      "quote": "InkLane Printers: the order expect ready in 4 days.",
+      "promised_days": 4,
+      "actual_days": 7.8,
+      "hedged": true
+    },
+    {
+      "id": "SP-060",
+      "week": 7,
+      "partner": "speedy-courier",
+      "quote": "Speedy Courier: the order  ready in 7 days.",
+      "promised_days": 7,
+      "actual_days": 8.7,
+      "hedged": false
+    }
+  ]
+}
