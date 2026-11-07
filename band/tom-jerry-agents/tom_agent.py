@@ -34,7 +34,7 @@ async def main() -> None:
         llm=groq_llm(),
         checkpointer=InMemorySaver(),
     )
-    logger.info("Tom is on the prowl, looking for Jerry...")
+    logger.info("Tom is ready to audit WHATIF business scenarios.")
     async with Agent.from_config("tom_agent", adapter=adapter) as agent:
         await agent.run_forever()
 

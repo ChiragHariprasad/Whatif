@@ -23,8 +23,10 @@ class Store:
         self.lock = threading.RLock()
 
     def connection(self) -> sqlite3.Connection:
-        connection = sqlite3.connect(self.path, check_same_thread=False)
+        connection = sqlite3.connect(self.path, check_same_thread=False, timeout=30.0)
         connection.row_factory = sqlite3.Row
+        connection.execute("PRAGMA journal_mode=WAL;")
+        connection.execute("PRAGMA busy_timeout=30000;")
         return connection
 
     def initialize(self) -> None:
@@ -118,6 +120,11 @@ class Store:
     def deliver_promise(self, promise_id: str, days: float) -> None:
         with self.lock, self.connection() as db:
             db.execute("UPDATE promises SET delivered_days=?, delivered_at=? WHERE id=?", (days, utcnow(), promise_id))
+
+    def deliver_promises(self, deliveries: list[tuple[str, float]]) -> None:
+        with self.lock, self.connection() as db:
+            for promise_id, days in deliveries:
+                db.execute("UPDATE promises SET delivered_days=?, delivered_at=? WHERE id=?", (days, utcnow(), promise_id))
 
     def add_memory_event(self, kind: str, document_id: str, content: str, tags: list[str], remote_state: str) -> None:
         with self.lock, self.connection() as db:

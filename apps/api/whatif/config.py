@@ -17,6 +17,16 @@ for week, value in {
 }.items():
     SEASONAL[week] = value
 
+# These worlds do not share the consumer-gifting demand curve. Keep the
+# definitions explicit so a future world cannot accidentally inherit it.
+B2B_SEASONAL = [1.0] * 52
+for week, value in {20: .94, 21: .94, 50: .86, 51: .82}.items():
+    B2B_SEASONAL[week] = value
+
+CAFE_SEASONAL = [1.0] * 52
+for week, value in {23: .94, 24: .91, 25: .89, 26: .90, 27: .93, 42: 1.07, 43: 1.09, 44: 1.06}.items():
+    CAFE_SEASONAL[week] = value
+
 
 @dataclass
 class Group:
@@ -53,9 +63,18 @@ class Business:
     fixed_weekly: float
     cod_share: float
     courier_key: str
+    # Generalises COD timing to invoices and platform payouts. cod_share is
+    # retained for backwards-compatible persisted worlds.
+    delayed_receipts_share: float | None = None
+    currency_symbol: str = "₹"
+    locale: str = "en-IN"
     start_date: str = "2025-07-07"
     reorder_every: int = 2
     seasonal: list[float] = field(default_factory=lambda: list(SEASONAL))
+
+    @property
+    def receipt_delay_share(self) -> float:
+        return max(0.0, min(1.0, self.cod_share if self.delayed_receipts_share is None else self.delayed_receipts_share))
 
     def group(self, key: str) -> Group:
         return next(g for g in self.groups if g.key == key)
@@ -94,8 +113,10 @@ class Business:
         return cls(
             name=raw["name"], groups=[Group(**x) for x in raw["groups"]],
             partners=[Partner(**x) for x in raw["partners"]], cash0=raw["cash0"],
-            fixed_weekly=raw["fixed_weekly"], cod_share=raw["cod_share"],
-            courier_key=raw["courier_key"], start_date=raw.get("start_date", "2025-07-07"),
+            fixed_weekly=raw["fixed_weekly"], cod_share=raw.get("cod_share", 0.0),
+            courier_key=raw["courier_key"], delayed_receipts_share=raw.get("delayed_receipts_share"),
+            currency_symbol=raw.get("currency_symbol", "₹"), locale=raw.get("locale", "en-IN"),
+            start_date=raw.get("start_date", "2025-07-07"),
             reorder_every=raw.get("reorder_every", 2), seasonal=raw.get("seasonal", list(SEASONAL)),
         )
 
@@ -156,6 +177,7 @@ def northlight_studio_business() -> Business:
             Partner("devcraft-contractors", "DevCraft Contractors", "supplier", 7),
         ],
         cash0=350000, fixed_weekly=280000, cod_share=0.0, courier_key="apex-digital",
+        delayed_receipts_share=1.0, seasonal=list(B2B_SEASONAL),
     )
 
 
@@ -172,6 +194,7 @@ def brew_lane_cafe_business() -> Business:
             Partner("app-payouts", "Delivery App Payouts", "courier", 7),
         ],
         cash0=180000, fixed_weekly=210000, cod_share=0.0, courier_key="app-payouts",
+        delayed_receipts_share=.45, seasonal=list(CAFE_SEASONAL),
     )
 
 

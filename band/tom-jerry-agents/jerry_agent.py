@@ -33,7 +33,7 @@ async def main() -> None:
         llm=groq_llm(),
         checkpointer=InMemorySaver(),
     )
-    logger.info("Jerry is safe in his hole, but listening...")
+    logger.info("Jerry is ready to propose staged WHATIF growth tests.")
     async with Agent.from_config("jerry_agent", adapter=adapter) as agent:
         await agent.run_forever()
 

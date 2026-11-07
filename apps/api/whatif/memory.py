@@ -7,6 +7,7 @@ from typing import Any
 from .storage import Store
 
 MISSION = "Act as the decision memory for this business. Never invent numbers. Cite the memories used and say when evidence is thin."
+_SYNC_POOL = concurrent.futures.ThreadPoolExecutor(max_workers=4)
 
 
 class HindsightMemory:
@@ -22,8 +23,7 @@ class HindsightMemory:
         self.last_error: str | None = None
 
     def _call(self, fn: Any, *args: Any, **kwargs: Any) -> Any:
-        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
-            return pool.submit(fn, *args, **kwargs).result()
+        return _SYNC_POOL.submit(fn, *args, **kwargs).result()
 
     @property
     def configured(self) -> bool:

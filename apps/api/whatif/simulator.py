@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from typing import Any
 
 import numpy as np
@@ -22,14 +22,15 @@ class Decision:
     duration: int = 4
     title: str | None = None
     linked_decisions: list[Decision] = field(default_factory=list)
+    horizon: int = HORIZON
 
     @property
     def end(self) -> int:
-        return min(HORIZON, self.start + self.duration)
+        return min(self.horizon, self.start + self.duration)
 
     @property
     def eval_end(self) -> int:
-        return min(HORIZON, self.end + (2 if self.lever == "promotion" else 0))
+        return min(self.horizon, self.end + (2 if self.lever == "promotion" else 0))
 
     def active(self, week: int) -> bool:
         return self.start <= week < self.end
@@ -53,37 +54,29 @@ def title_for(decision: Decision) -> str:
     return f"Restock {target} with {decision.change:.0f} extra units"
 
 
-def test_decision(decision: Decision) -> Decision:
+def test_decision(decision: Decision, business: Business) -> Decision:
     if decision.linked_decisions:
         linked = []
         for ld in decision.linked_decisions:
             if ld.lever == "ads":
-                linked.append(Decision("ads", ld.group, min(ld.change * .4, .20), ld.start, 2, title="Capped ad test"))
+                linked.append(Decision("ads", ld.group, min(ld.change * .4, .20), ld.start, 2, title="Capped ad test", horizon=decision.horizon))
             elif ld.lever == "restock":
-                linked.append(Decision("restock", ld.group, max(250, round(ld.change * .25)), ld.start, 1, title="Split order (batch 1)"))
+                min_units = max(1, round(business.group(ld.group).base_units * .2))
+                linked.append(Decision("restock", ld.group, max(min_units, round(ld.change * .25)), ld.start, 1, title="Split order (batch 1)", horizon=decision.horizon))
             else:
-                linked.append(test_decision(ld))
-        return Decision(decision.lever, decision.group, decision.change * .5, decision.start, 2, title="Smaller test: split restock & cap ads", linked_decisions=linked)
+                linked.append(test_decision(replace(ld, horizon=decision.horizon), business))
+        return Decision(decision.lever, decision.group, decision.change * .5, decision.start, 2, title="Smaller test: split restock & cap ads", linked_decisions=linked, horizon=decision.horizon)
     if decision.lever == "restock":
         change = max(1, round(decision.change * .5))
     else:
         change = decision.change * .5
-    return Decision(decision.lever, decision.group, change, decision.start, max(2, min(decision.duration, 2)), title="Smaller test")
+    return Decision(decision.lever, decision.group, change, decision.start, max(2, min(decision.duration, 2)), title="Smaller test", horizon=decision.horizon)
 
 
 def parse_question(question: str, business: Business) -> Decision:
     """Small deterministic parser; the API also returns the editable decision card."""
     import re
     lower = question.lower()
-    if "diwali" in lower and any(x in lower for x in ("price", "raise")) and any(x in lower for x in ("ad", "instagram", "spend")) and any(x in lower for x in ("restock", "jar", "order")):
-        return Decision(
-            "price", "core", 0.08, start=1, duration=4,
-            title="Diwali Campaign: Core price +8%, Ads +₹2L, 4,000 jars restock",
-            linked_decisions=[
-                Decision("ads", "core", 0.45, start=1, duration=4, title="Diwali Ads: +₹2L/mo"),
-                Decision("restock", "premium", 4000, start=1, duration=1, title="Restock 4,000 Rajan jars")
-            ]
-        )
     group_keys = [g.key for g in business.groups]
     group = group_keys[0]
     for g in business.groups:
@@ -100,6 +93,34 @@ def parse_question(question: str, business: Business) -> Decision:
     match = re.search(r"(-?\d+(?:\.\d+)?)\s*%", lower)
     percent = float(match.group(1)) / 100 if match else .10
     duration = int(re.search(r"(\d+)\s*(?:week|wk)", lower).group(1)) if re.search(r"(\d+)\s*(?:week|wk)", lower) else 4
+    # A campaign can contain several levers. Extract the values from the text
+    # rather than substituting a candle-specific preset.
+    has_price = any(x in lower for x in ("price", "rate", "raise"))
+    has_ads = any(x in lower for x in ("ad", "advert", "instagram", "spend", "linkedin"))
+    has_restock = any(x in lower for x in ("restock", "reorder", "inventory", "stock"))
+    if sum((has_price, has_ads, has_restock)) >= 2:
+        percentages = [float(value) / 100 for value in re.findall(r"([+-]?\d+(?:\.\d+)?)\s*%", lower)]
+        price_change = percentages[0] if percentages else .10
+        ad_change = percentages[1] if len(percentages) > 1 else .20
+        money_match = re.search(r"([+-]?\d+(?:\.\d+)?)\s*(?:l|lakh)\b", lower)
+        if has_ads and money_match:
+            ad_change = float(money_match.group(1)) * 100000 / max(business.monthly_ad_spend, 1)
+        restock_match = re.search(r"([\d,]+)\s*(?:unit|jar|piece|project|team|order)", lower)
+        restock_change = float(restock_match.group(1).replace(",", "")) if restock_match else max(1, round(business.group(group).base_units * .25))
+        restock_group = group
+        restock_clause = lower[lower.find("restock"):] if "restock" in lower else lower
+        for candidate in business.groups:
+            supplier = business.partner(candidate.supplier)
+            if candidate.key in restock_clause or any(word in restock_clause for word in candidate.name.lower().split() if len(word) > 3) or supplier.key.split("-")[0] in restock_clause:
+                restock_group = candidate.key
+                break
+        linked: list[Decision] = []
+        primary = "price" if has_price else ("ads" if has_ads else "restock")
+        if has_price and primary != "price": linked.append(Decision("price", group, price_change, duration=duration, title=f"Price change {price_change:+.0%}"))
+        if has_ads and primary != "ads": linked.append(Decision("ads", group, ad_change, duration=duration, title=f"Ad change {ad_change:+.0%}"))
+        if has_restock and primary != "restock": linked.append(Decision("restock", restock_group, restock_change, duration=1, title=f"Restock {restock_change:.0f} units"))
+        primary_change = price_change if primary == "price" else (ad_change if primary == "ads" else restock_change)
+        return Decision(primary, restock_group if primary == "restock" else group, primary_change, duration=1 if primary == "restock" else duration, title="Multi-lever campaign", linked_decisions=linked)
     if any(x in lower for x in ("price", "raise", "increase price", "cheaper")):
         if any(x in lower for x in ("discount", "off", "sale", "promo")): return Decision("promotion", group, abs(percent), duration=duration)
         sign = -1 if any(x in lower for x in ("lower", "reduce", "decrease")) else 1
@@ -110,12 +131,12 @@ def parse_question(question: str, business: Business) -> Decision:
     if any(x in lower for x in ("promo", "discount", "sale", "offer")):
         return Decision("promotion", group, abs(percent), duration=duration)
     if any(x in lower for x in ("restock", "reorder", "inventory", "stock")):
-        amount = float(re.search(r"(\d+)\s*(?:unit|jar|piece)", lower).group(1)) if re.search(r"(\d+)\s*(?:unit|jar|piece)", lower) else 250
+        amount = float(re.search(r"([\d,]+)\s*(?:unit|jar|piece|project|team|order)", lower).group(1).replace(",", "")) if re.search(r"([\d,]+)\s*(?:unit|jar|piece|project|team|order)", lower) else max(1, round(business.group(group).base_units * .25))
         return Decision("restock", group, amount, duration=1)
     return Decision("price", group, .10, duration=duration)
 
 
-def _world(business: Business, beliefs: dict[str, dict[str, Any]], n: int, seed: int) -> dict[str, Any]:
+def _world(business: Business, beliefs: dict[str, dict[str, Any]], n: int, seed: int, horizon: int) -> dict[str, Any]:
     rng = np.random.default_rng(seed); groups = business.groups; g_count = len(groups)
     elasticity = np.empty((n, g_count)); ad_shape = np.empty((n, g_count)); ad_half = np.empty((n, g_count))
     promo_lift = np.empty((n, g_count)); promo_pull = np.empty((n, g_count))
@@ -129,9 +150,9 @@ def _world(business: Business, beliefs: dict[str, dict[str, Any]], n: int, seed:
     ratios = {}
     for partner in business.partners:
         b = beliefs[f"partner:{partner.key}"]
-        ratios[partner.key] = np.exp(rng.normal(b["mean"], max(b.get("sigma", .15), .04), (n, HORIZON)))
+        ratios[partner.key] = np.exp(rng.normal(b["mean"], max(b.get("sigma", .15), .04), (n, horizon)))
     return {"rng": rng, "elasticity": elasticity, "ad_shape": ad_shape, "ad_half": ad_half, "promo_lift": promo_lift, "promo_pull": promo_pull, "ratios": ratios,
-            "demand_noise": np.exp(rng.normal(0, .065, (n, HORIZON, g_count))), "level": np.exp(rng.normal(0, .04, (n, 1))) }
+            "demand_noise": np.exp(rng.normal(0, .065, (n, horizon, g_count))), "level": np.exp(rng.normal(0, .04, (n, 1))) }
 
 
 def _scatter(target: np.ndarray, indexes: np.ndarray, values: np.ndarray) -> None:
@@ -175,8 +196,9 @@ def run_twin(business: Business, world: dict[str, Any], decisions: list[Decision
         revenue = (sold * price).sum(1); revenues[:, t] = revenue
         courier_ratio = world["ratios"][business.courier_key][:, t]; delay = business.partner(business.courier_key).promised_days * courier_ratio / 7
         low = np.floor(delay).astype(int); fraction = delay - low
-        _scatter(receipts_future, t + low, business.cod_share * revenue * (1 - fraction)); _scatter(receipts_future, t + low + 1, business.cod_share * revenue * fraction)
-        receipts_future[:, t] += (1 - business.cod_share) * revenue
+        delayed_share = business.receipt_delay_share
+        _scatter(receipts_future, t + low, delayed_share * revenue * (1 - fraction)); _scatter(receipts_future, t + low + 1, delayed_share * revenue * fraction)
+        receipts_future[:, t] += (1 - delayed_share) * revenue
         orders = np.zeros((n, groups))
         if (now_week + t) % business.reorder_every == 0:
             target = base * cover * business.season(now_week + t + 1); pipeline = arrivals[:, :, t + 1:].sum(2)
@@ -204,11 +226,13 @@ def cash_summary(cash: np.ndarray) -> dict[str, Any]:
 
 
 def simulate(business: Business, beliefs: dict[str, dict[str, Any]], decision: Decision, now_week: int = 0,
-             seed: int = 17, runs: int = DEFAULT_RUNS, calibration_scale: float = 1.) -> tuple[dict[str, Any], dict[str, Any]]:
+             seed: int = 17, runs: int = DEFAULT_RUNS, calibration_scale: float = 1., horizon: int = HORIZON) -> tuple[dict[str, Any], dict[str, Any]]:
     """Common random numbers make the scenario comparison stable and interpretable."""
     if decision.lever not in LEVERS: raise ValueError("Unknown lever")
     if decision.group not in [group.key for group in business.groups]: raise ValueError("Unknown product group")
-    world = _world(business, beliefs, runs, seed); baseline = run_twin(business, world, [], now_week); test = test_decision(decision)
+    horizon = max(13, min(52, horizon))
+    decision = replace(decision, horizon=horizon, linked_decisions=[replace(item, horizon=horizon) for item in decision.linked_decisions])
+    world = _world(business, beliefs, runs, seed, horizon); baseline = run_twin(business, world, [], now_week); test = test_decision(decision, business)
     group_index = [g.key for g in business.groups].index(decision.group); measurement_noise = world["rng"].normal(0, .055, runs)
     def scenario(label: str, d: Decision | None) -> tuple[dict[str, Any], dict[str, Any]]:
         target_decisions = [] if d is None else d.all_decisions
@@ -223,7 +247,7 @@ def simulate(business: Business, beliefs: dict[str, dict[str, Any]], decision: D
     nothing, _ = scenario("Do nothing", None); plan, plan_run = scenario("Your plan", decision); small_test, _ = scenario("Test first", test)
     plan["recommended"] = plan["loss_chance"] <= small_test["loss_chance"] and plan["profit_delta"]["p50"] > 0
     small_test["recommended"] = not plan["recommended"]
-    return {"decision": decision.as_dict(), "now_week": now_week, "runs": runs, "nothing": nothing, "plan": plan, "test": small_test, "assumptions": important_assumptions(business, beliefs, decision), "simulation_seed": seed}, plan_run
+    return {"decision": decision.as_dict(), "now_week": now_week, "horizon": horizon, "runs": runs, "nothing": nothing, "plan": plan, "test": small_test, "assumptions": important_assumptions(business, beliefs, decision), "simulation_seed": seed}, plan_run
 
 
 def important_assumptions(business: Business, beliefs: dict[str, dict[str, Any]], decision: Decision) -> list[dict[str, Any]]:
@@ -236,5 +260,5 @@ def important_assumptions(business: Business, beliefs: dict[str, dict[str, Any]]
         b = beliefs[f"promo_lift:{group.key}"]; output.append({"name": "Promotion lift", "value": b["mean"], "min": 0, "max": 1.5, "unit": "unit lift", "evidence": b["n"]})
     partner = business.partner(group.supplier); b = beliefs[f"partner:{partner.key}"]
     output.append({"name": f"{partner.name} delivery", "value": partner.promised_days * math.exp(b["mean"]), "min": partner.promised_days, "max": partner.promised_days * 3, "unit": "days", "evidence": b["n"]})
-    output.append({"name": "COD share", "value": business.cod_share, "min": 0, "max": 1, "unit": "share", "evidence": 0})
+    output.append({"name": "Delayed receipts share", "value": business.receipt_delay_share, "min": 0, "max": 1, "unit": "share", "evidence": 0})
     return output[:3]
